@@ -9,7 +9,8 @@
                  [com.taoensso/timbre "2.1.2"]
                  [com.postspectacular/rotor "0.1.0"]
                  [com.taoensso/tower "1.7.1"]
-                 [markdown-clj "0.9.28"]]
+                 [markdown-clj "0.9.28"]
+                 [com.draines/postal "1.10.3"]]
   :plugins [[lein-ring "0.8.5"]]
   :ring {:handler zevi.handler/war-handler
          :init    zevi.handler/init

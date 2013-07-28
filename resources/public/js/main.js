@@ -14,60 +14,60 @@ $(document).ready(function() {
         });
       }
     });
-    
+
     $('#contact-form textarea').autoResize();
-    
+
     $('#send').click(function(evt) {
         var data = {},
           errors = [];
-        
+
         $('#send').hide();
         $('#sending').html('Sending...').show();
-        
+
         data.name = $('#name').val();
         data.email = $('#email').val();
         data.message = $('#message').val();
         data.comment = $('#comment').val();
-        
+
         if (data.name.match(/^\s*$/)) {
-            errors.push('You need to enter your name.');
+            errors.push('Please provide your name.');
         }
-        if (data.email.match(/^\s*$/)) {
-            errors.push('You need to enter your email.');
+        if (!data.email.match(/^[a-z0-9._%-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i)) {
+            errors.push('Please provide your email.');
         }
         if (data.message.match(/^\s*$/)) {
-            errors.push('You need to enter your message.');
+            errors.push('Please enter your message.');
         }
-        
+
         if (errors.length) {
             $('#send').show();
             $('#sending').hide();
-            
+
             $('#dlg-cnt').html(errors.join('<br />'));
             $('#dlg').removeClass('success').addClass('error').reveal();
         } else {
             $.ajax({
                 type: 'POST',
-                url: '/contact/',
-                dataType: 'html',
+                url: '/contact-me',
+                dataType: 'json',
                 data: data,
                 success: function(resp) {
                     $('#send').show();
                     $('#sending').hide();
-                    
-                    if (resp === 'SUCCESS') {
+
+                    if (resp.result === 'success') {
                         $('#name').val('');
                         $('#email').val('');
                         $('#message').val('');
-                        
+
                         $('#dlg-cnt').html('Your message has been sent.');
                         $('#dlg').removeClass('error').addClass('success').reveal();
                     } else {
-                        $('#dlg-cnt').html(resp);
+                        $('#dlg-cnt').html(resp.result);
                         $('#dlg').removeClass('success').addClass('error').reveal();
                     }
                 }
-            });           
+            });
         }
     });
 });
