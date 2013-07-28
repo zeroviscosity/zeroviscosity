@@ -1,6 +1,6 @@
-# zevi
+# zeroviscosity.com
 
-FIXME
+Built using Luminus (http://www.luminusweb.net/)
 
 ## Prerequisites
 
@@ -14,6 +14,3 @@ To start a web server for the application, run:
 
     lein ring server
 
-## License
-
-Copyright © 2013 FIXME
