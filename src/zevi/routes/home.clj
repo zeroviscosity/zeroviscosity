@@ -28,7 +28,7 @@
     (do
       (send-message {:from email
                      :to ["kent.english@gmail.com"]
-                     :subject "Website Contact"
+                     :subject (str "Website Contact: " name)
                      :body message})
       (resp/json {:result "success"}))))
 
