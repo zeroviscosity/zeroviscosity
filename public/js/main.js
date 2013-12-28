@@ -55,7 +55,7 @@ $(document).ready(function() {
                     $('#send').show();
                     $('#sending').hide();
 
-                    if (resp.result === 'success') {
+                    if (resp.result === 'ok') {
                         $('#name').val('');
                         $('#email').val('');
                         $('#message').val('');

@@ -83,7 +83,7 @@ header { margin: 0 auto; width: 600px; }
 footer { font-size: 80%; margin: 60px auto 10px auto; width: 520px; text-align: center; }
 
 nav { margin: 0 auto; padding: 5px 6px; width: 580px; }
-nav ul { list-style-type; none; padding: 0; margin: 0; }
+nav ul { list-style-type: none; padding: 0; margin: 0; }
 nav ul li { margin: 0 0 0 0; float: left; width: 192px; }
 nav ul li a {
   border: 2px dotted #fff;
@@ -132,8 +132,8 @@ textarea:focus, input:not([type="submit"]):not([type="button"]):not([type="check
 	box-shadow: 0 2px 3px rgba(34,144,253,0.5) inset, 0 1px 0 rgba(255,255,255,0.2);
 }
 
-.lt-ie9 nav { border: 1px solid #eee; }
-.lt-ie9 textarea, .lt-ie9 input[type="text"], .lt-ie9 input[type="password"], .lt-ie9 input[type="email"] { width: 500px; }
+.oldie nav { border: 1px solid #eee; }
+.oldie textarea, .oldie input[type="text"], .oldie input[type="password"], .oldie input[type="email"] { width: 500px; }
 
 .error { color: #d3102e; }
 .success { color: #3f7f00; }
@@ -290,7 +290,6 @@ textarea:focus, input:not([type="submit"]):not([type="button"]):not([type="check
   margin-left: -300px;
   width: 520px;
   background: #eee url(/img/modal-gloss.png) no-repeat -200px -80px;
-  background: #eee url(/img/modal-gloss.png) no-repeat -200px -80px;
   position: absolute;
   z-index: 101;
   padding: 30px 40px 34px;
@@ -323,7 +322,7 @@ textarea:focus, input:not([type="submit"]):not([type="button"]):not([type="check
   header { width: 1024px; }
   footer { margin: 600px auto 10px auto; width: 1024px; }
   nav { margin: 10px 0 0 795px; padding: 5px; position: fixed; width: 200px; }
-  nav ul li { float: none width: auto; }
+  nav ul li { float: none; width: auto; }
   .mn { width: 1024px; }
   .wrp { padding: 0 200px 0 0; }
   .bd { padding: 10px 34px 10px 16px; }

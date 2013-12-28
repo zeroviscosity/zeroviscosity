@@ -1,0 +1,76 @@
+doctype 5
+//if lt IE 7
+  html.no-js.ie.ie6.oldie(lang='en')
+//if IE 7
+  html.no-js.ie.ie7.oldie(lang='en')
+//if IE 8
+  html.no-js.ie.ie8.oldie(lang='en')
+//if IE 9
+  html.no-js.ie(lang='en')
+//[if gt IE 9]><!
+html.no-js(lang='en')
+  //<![endif]
+  meta(charset="utf-8")
+  meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+
+  title Zero Viscosity Solutions
+
+  meta(name="description", content="Zero Viscosity: A web development company based in Toronto, Ontario. Specializing in open source web applications.")
+  meta(name="viewport", content="width=600px")
+
+  link(href="/css/style.css?v=1.0.1", rel="stylesheet")
+  script(src="/js/libs/modernizr-2.5.3.min.js")
+  script(src="http://use.typekit.com/hfq1gap.js")
+  script.
+    try{Typekit.load();}catch(e){}
+body
+  //if lt IE 9
+    p.chromeframe
+      span Your browser is
+      em ancient
+      span !
+      a(href="http://browsehappy.com/") Upgrade to a different browser
+      span or
+      a(href="http://www.google.com/chromeframe/?redirect=true") install Google Chrome Frame
+      span to experience this site.
+  header.clearfix.cnt
+    a.ir.logo(href="/") Zero Viscosity
+    div.navWrp
+      nav.cnt.clearfix
+        ul
+          li
+            a.rnd.scrollLink(href="#profile")
+              span Profile
+          li
+            a.rnd.scrollLink(href="#portfolio")
+              span Portfolio
+          li.last
+            a.rnd.scrollLink(href="#contact")
+             span Contact Me
+
+  div.mn(role="main")
+    div.wrp
+      block body
+  footer.bd.cnt &copy;2012&ndash;#{(new Date()).getFullYear()} Zero Viscosity Data Integration Solutions
+
+  div#dlg.reveal-modal
+    div#dlg-cnt
+    a.close-reveal-modal &#215;
+
+  script(src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
+  script.
+    window.jQuery || document.write('<script src="/js/libs/jquery-1.7.1.min.js"><\/script>')
+  script(src="/js/plugins.js?v=1.0.1")
+  script(src="/js/main.js?v=1.0.1")
+  script.
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-33242750-1']);
+    _gaq.push(['_setDomainName', 'zeroviscosity.com']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
