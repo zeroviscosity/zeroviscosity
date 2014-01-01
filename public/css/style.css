@@ -1,4 +1,6 @@
 /* HTML5 Boilerplate  */
+@import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
+@import url("//fonts.googleapis.com/css?family=Orbitron");
 
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
 audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
@@ -66,7 +68,7 @@ td { vertical-align: top; }
 
 body {
   background: transparent url(/img/tiles.png) center center repeat;
-  font-family: "pragmatica-web",sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 }
 
 h1,h2,h3,h4,h5,h6 { font-family: "orbitron",sans-serif; margin: 0 0 8px 0; }
