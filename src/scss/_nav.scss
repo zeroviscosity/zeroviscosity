@@ -7,12 +7,15 @@ nav {
     position: relative;
     .zv-logo {
       @include single-transition();
-      background: transparent url(/img/logo-60.png) no-repeat left top;
+      background: transparent url(/img/logo-1-60.png) no-repeat left top;
       height: 60px;
       left: 30px;
       position: absolute;
       top: 10px;
       width: 60px;
+      &:hover {
+        background: transparent url(/img/logo-2-60.png) no-repeat left top;
+      }
     }
   }
   .zv-logo-bottom {
@@ -51,12 +54,15 @@ nav {
       height: 35px;
       position: relative;
       .zv-logo {
-        background: transparent url(/img/logo-60.png) no-repeat left top;
+        background: transparent url(/img/logo-1-60.png) no-repeat left top;
         height: 60px;
         left: 30px;
         position: absolute;
         top: 10px;
         width: 60px;
+        &:hover {
+          background: transparent url(/img/logo-2-60.png) no-repeat left top;
+        }
       }
     }
     .zv-logo-bottom {
@@ -84,11 +90,14 @@ nav {
     .zv-logo-top {
       height: 75px;
       .zv-logo {
-        background: transparent url(/img/logo-120.png) no-repeat left top;
+        background: transparent url(/img/logo-1-120.png) no-repeat left top;
         height: 120px;
         left: 60px;
         top: 25px;
         width: 120px;
+        &:hover {
+          background: transparent url(/img/logo-2-60.png) no-repeat left top;
+        }
       }
     }
     .zv-logo-bottom {
