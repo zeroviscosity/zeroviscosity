@@ -1,3 +1,4 @@
+/node_modules
 /target
 /lib
 /classes
@@ -7,5 +8,6 @@ pom.xml
 *.class
 /.lein-*
 /.env
+/.idea
 *.log
 
