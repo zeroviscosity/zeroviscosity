@@ -1,0 +1,135 @@
+@charset "UTF-8";
+
+@import url("//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700");
+@import
+  "../../bower_components/foundation/scss/normalize",
+  "../../bower_components/foundation/scss/foundation/components/global";
+
+$primary-color: #88D21E;
+$secondary-color: #727272;
+$tertiary-color: #575757;
+$background-color: #efefef;
+$body-font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$header-font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$header-font-weight: 300;
+
+@import
+  "../../bower_components/foundation/scss/foundation/components/panels",
+  "../../bower_components/foundation/scss/foundation/components/type",
+  "../../bower_components/foundation/scss/foundation/components/visibility",
+  "nav";
+
+html, body {
+  background-color: $background-color;
+  font-family: $body-font-family;
+}
+
+pre {
+  margin-bottom: 20px;
+  code {
+    font-size: 14px;
+  }
+}
+
+footer {
+  font-size: 12px;
+  padding: 20px 0 10px 0;
+  text-align: center;
+  width: 100%;
+}
+
+a {
+  color: darken($primary-color, 10%);
+  &:visited {
+    color: darken($primary-color, 10%);
+  }
+  &:hover {
+    color: darken($primary-color, 20%);
+  }
+}
+
+blockquote {
+  @extend .panel;
+}
+
+.panel.browsehappy {
+  margin: 0;
+}
+
+.zv-container {
+  .zv-post, .zv-page, .zv-list, .zv-error {
+    padding: 5px 12px 20px 12px;
+    .zv-content {
+      margin: 20px 0 40px 0;
+    }
+  }
+  .zv-list {
+    .zv-list-entry {
+      border-bottom: 1px solid $secondary-color;
+      padding: 12px; 
+      .zv-title {
+        font-size: 36px;
+      }
+    }
+  }
+  .zv-meta {
+    margin: 0 0 8px 0;
+    .zv-date {
+      color: #777;
+      font-size: 14px;
+    }
+    .zv-tags {
+      .zv-tag {
+        @include radius(4px);
+        @include single-transition(all, 0.3s);
+        background: $secondary-color;
+        color: white;
+        font-size: 12px;
+        margin: 0 4px 0 0;
+        padding: 0px 8px;
+        text-decoration: none;
+        &:hover {
+          background: darken($secondary-color, 10%);
+          color: $primary-color; 
+        }
+      }
+    }
+  }
+}
+
+@media #{$medium} {
+  html, body {
+    height: 100%;
+    overflow-y: auto;
+  }
+  footer {
+    bottom: 0;
+    color: white;
+    left: 0;
+    padding: 20px 10px 10px 10px;
+    position: fixed;
+    width: 120px;
+  }
+  .zv-container {
+    height: 100%;
+    overflow-y: auto;
+    .zv-page, .zv-post, .zv-list, .zv-error {
+      padding: 10px 20px;
+    }
+  }
+}
+
+@media #{$large} {
+  footer {
+    width: 240px;
+  }
+  .zv-container {
+    .zv-page, .zv-post, .zv-list, .zv-error {
+      margin: 0 auto;
+      max-width: 1024px;
+      padding: 20px 40px;
+    }
+  }
+}
+
+@import "obsidian";

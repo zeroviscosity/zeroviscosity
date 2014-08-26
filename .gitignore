@@ -1,11 +1,8 @@
-/target
-/lib
-/classes
-/checkouts
-pom.xml
-*.jar
-*.class
-/.lein-*
-/.env
+*.DS_Store
+*.swp
 *.log
+bower_components
+node_modules
+.sass-cache
+public/css/main.css
 

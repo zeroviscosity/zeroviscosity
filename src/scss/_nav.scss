@@ -1,0 +1,101 @@
+nav {
+  background-color: $secondary-color;
+  height: 80px;
+  .zv-logo-top {
+    background-color: $primary-color;
+    height: 35px;
+    position: relative;
+    .zv-logo {
+      @include single-transition();
+      background: transparent url(/img/logo-60.png) no-repeat left top;
+      height: 60px;
+      left: 30px;
+      position: absolute;
+      top: 10px;
+      width: 60px;
+    }
+  }
+  .zv-logo-bottom {
+    background-color: $background-color;
+    height: 10px;
+  }
+  .zv-nav {
+    list-style-type: none;
+    margin: rem-calc(0 0 0 100);
+    padding: 0;
+    li {
+      float: left;
+      a {
+        @include single-transition(all, 0.3s);
+        color: $background-color;
+        display: block;
+        margin: 0 10px 0 0;
+        padding: 5px 8px 5px 8px;
+        &:hover {
+          background-color: $tertiary-color;
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+@media #{$medium} {
+  nav {
+    float: left;
+    height: 100%;
+    overflow-y: auto;
+    width: 120px;
+    .zv-logo-top {
+      background-color: $primary-color;
+      height: 35px;
+      position: relative;
+      .zv-logo {
+        background: transparent url(/img/logo-60.png) no-repeat left top;
+        height: 60px;
+        left: 30px;
+        position: absolute;
+        top: 10px;
+        width: 60px;
+      }
+    }
+    .zv-logo-bottom {
+      background-color: $background-color;
+      height: 10px;
+    }
+    .zv-nav {
+      border-top: 1px solid $tertiary-color;
+      margin: 40px 0 7px 0;
+      li {
+        float: none;
+        a {
+          background-color: $secondary-color;
+          border-bottom: 1px solid $tertiary-color;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+@media #{$large} {
+  nav {
+    width: 240px;
+    .zv-logo-top {
+      height: 75px;
+      .zv-logo {
+        background: transparent url(/img/logo-120.png) no-repeat left top;
+        height: 120px;
+        left: 60px;
+        top: 25px;
+        width: 120px;
+      }
+    }
+    .zv-logo-bottom {
+      height: 20px;
+    }
+    .zv-nav {
+      margin: 85px 0 14px 0;
+    }
+  }
+}
