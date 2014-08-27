@@ -25,15 +25,15 @@ html, body {
 }
 
 pre {
-  margin-bottom: 20px;
+  margin-bottom: rem-calc(20);
   code {
-    font-size: 14px;
+    font-size: rem-calc(14);
   }
 }
 
 footer {
-  font-size: 12px;
-  padding: 20px 0 10px 0;
+  font-size: rem-calc(12);
+  padding: rem-calc(20) 0 rem-calc(10) 0;
   text-align: center;
   width: 100%;
 }
@@ -58,35 +58,35 @@ blockquote {
 
 .zv-container {
   .zv-post, .zv-page, .zv-list, .zv-error {
-    padding: 5px 12px 20px 12px;
+    padding: rem-calc(5) rem-calc(12) rem-calc(20) rem-calc(12);
     .zv-content {
-      margin: 20px 0 40px 0;
+      margin: rem-calc(20) 0 rem-calc(40) 0;
     }
   }
   .zv-list {
     .zv-list-entry {
-      border-bottom: 1px solid $secondary-color;
-      padding: 12px; 
+      border-bottom: rem-calc(1) solid $secondary-color;
+      padding: rem-calc(12); 
       .zv-title {
-        font-size: 36px;
+        font-size: rem-calc(36);
       }
     }
   }
   .zv-meta {
-    margin: 0 0 8px 0;
+    margin: 0 0 rem-calc(8) 0;
     .zv-date {
       color: #777;
-      font-size: 14px;
+      font-size: rem-calc(14);
     }
     .zv-tags {
       .zv-tag {
-        @include radius(4px);
+        @include radius(rem-calc(4));
         @include single-transition(all, 0.3s);
         background: $secondary-color;
         color: white;
-        font-size: 12px;
-        margin: 0 4px 0 0;
-        padding: 0px 8px;
+        font-size: rem-calc(12);
+        margin: 0 rem-calc(4) 0 0;
+        padding: rem-calc(0) rem-calc(8);
         text-decoration: none;
         &:hover {
           background: darken($secondary-color, 10%);
@@ -106,28 +106,28 @@ blockquote {
     bottom: 0;
     color: white;
     left: 0;
-    padding: 20px 10px 10px 10px;
+    padding: rem-calc(20) rem-calc(10) rem-calc(10) rem-calc(10);
     position: fixed;
-    width: 120px;
+    width: rem-calc(120);
   }
   .zv-container {
     height: 100%;
     overflow-y: auto;
     .zv-page, .zv-post, .zv-list, .zv-error {
-      padding: 10px 20px;
+      padding: rem-calc(10) rem-calc(20);
     }
   }
 }
 
 @media #{$large} {
   footer {
-    width: 240px;
+    width: rem-calc(240);
   }
   .zv-container {
     .zv-page, .zv-post, .zv-list, .zv-error {
       margin: 0 auto;
-      max-width: 1024px;
-      padding: 20px 40px;
+      max-width: rem-calc(1024);
+      padding: rem-calc(20) rem-calc(40);
     }
   }
 }

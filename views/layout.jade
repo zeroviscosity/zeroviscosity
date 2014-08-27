@@ -14,11 +14,15 @@ html(lang="en")
       div.zv-logo-bottom
       ul.zv-nav
         li
-          a(href="/") Home
+          a(href="/")
+            span.icon.icon-home
+            span.text Home
         if pages && pages.length
           for page in pages
             li
-              a(href="/#{page.slug}")=page.title
+              a(href="/#{page.slug}")
+                span.icon(class="icon-#{page.slug}")
+                span.text=page.title
 
     div.zv-container
       block wrapper

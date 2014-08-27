@@ -1,28 +1,29 @@
 nav {
   background-color: $secondary-color;
-  height: 80px;
+  height: rem-calc(80);
   .zv-logo-top {
     background-color: $primary-color;
-    height: 35px;
+    height: rem-calc(35);
     position: relative;
     .zv-logo {
       @include single-transition();
-      background: transparent url(/img/logo-1-60.png) no-repeat left top;
-      height: 60px;
-      left: 30px;
+      background: transparent url(/img/logo-0-60.png) no-repeat left top;
+      height: rem-calc(60);
+      left: rem-calc(30);
       position: absolute;
-      top: 10px;
-      width: 60px;
+      top: rem-calc(10);
+      width: rem-calc(60);
       &:hover {
-        background: transparent url(/img/logo-2-60.png) no-repeat left top;
+        background: transparent url(/img/logo-1-60.png) no-repeat left top;
       }
     }
   }
   .zv-logo-bottom {
     background-color: $background-color;
-    height: 10px;
+    height: rem-calc(10);
   }
   .zv-nav {
+    float: right;
     list-style-type: none;
     margin: rem-calc(0 0 0 100);
     padding: 0;
@@ -32,11 +33,44 @@ nav {
         @include single-transition(all, 0.3s);
         color: $background-color;
         display: block;
-        margin: 0 10px 0 0;
-        padding: 5px 8px 5px 8px;
+        height: rem-calc(35);
+        margin: 0;
+        padding: rem-calc(5) rem-calc(20) 0 rem-calc(20);
+        .icon {
+          background-color: transparent;
+          background-repeat: no-repeat;
+          background-position: 0 0;
+          display: block;
+          height: rem-calc(24);
+          margin: 0;
+          width: rem-calc(24);
+          &.icon-home {
+            background-image: url(/img/icon-0.png);
+          }
+          &.icon-20-questions {
+            background-image: url(/img/icon-1.png);
+          }
+          &.icon-contact {
+            background-image: url(/img/icon-2.png);
+          }
+        }
+        .text {
+          display: none;
+        }
         &:hover {
           background-color: $tertiary-color;
           color: $primary-color;
+          .icon {
+            &.icon-home {
+              background-image: url(/img/icon-0-hover.png);
+            }
+            &.icon-20-questions {
+              background-image: url(/img/icon-1-hover.png);
+            }
+            &.icon-contact {
+              background-image: url(/img/icon-2-hover.png);
+            } 
+          }
         }
       }
     }
@@ -48,36 +82,42 @@ nav {
     float: left;
     height: 100%;
     overflow-y: auto;
-    width: 120px;
+    width: rem-calc(120);
     .zv-logo-top {
       background-color: $primary-color;
-      height: 35px;
+      height: rem-calc(35);
       position: relative;
       .zv-logo {
-        background: transparent url(/img/logo-1-60.png) no-repeat left top;
-        height: 60px;
-        left: 30px;
+        background: transparent url(/img/logo-0-60.png) no-repeat left top;
+        height: rem-calc(60);
+        left: rem-calc(30);
         position: absolute;
-        top: 10px;
-        width: 60px;
+        top: rem-calc(10);
+        width: rem-calc(60);
         &:hover {
-          background: transparent url(/img/logo-2-60.png) no-repeat left top;
+          background: transparent url(/img/logo-1-60.png) no-repeat left top;
         }
       }
     }
     .zv-logo-bottom {
       background-color: $background-color;
-      height: 10px;
+      height: rem-calc(10);
     }
     .zv-nav {
-      border-top: 1px solid $tertiary-color;
-      margin: 40px 0 7px 0;
+      border-top: rem-calc(1) solid $tertiary-color;
+      float: none;
+      margin: rem-calc(40) 0 rem-calc(7) 0;
       li {
         float: none;
         a {
           background-color: $secondary-color;
-          border-bottom: 1px solid $tertiary-color;
+          border-bottom: rem-calc(1) solid $tertiary-color;
+          height: auto;
           margin: 0;
+          padding: rem-calc(12);
+          .icon {
+            margin: 0 auto;
+          }
         }
       }
     }
@@ -86,25 +126,39 @@ nav {
 
 @media #{$large} {
   nav {
-    width: 240px;
+    width: rem-calc(240);
     .zv-logo-top {
-      height: 75px;
+      height: rem-calc(75);
       .zv-logo {
-        background: transparent url(/img/logo-1-120.png) no-repeat left top;
-        height: 120px;
-        left: 60px;
-        top: 25px;
-        width: 120px;
+        background: transparent url(/img/logo-0-120.png) no-repeat left top;
+        height: rem-calc(120);
+        left: rem-calc(60);
+        top: rem-calc(25);
+        width: rem-calc(120);
         &:hover {
-          background: transparent url(/img/logo-2-120.png) no-repeat left top;
+          background: transparent url(/img/logo-1-120.png) no-repeat left top;
         }
       }
     }
     .zv-logo-bottom {
-      height: 20px;
+      height: rem-calc(20);
     }
     .zv-nav {
-      margin: 85px 0 14px 0;
+      margin: rem-calc(85) 0 rem-calc(14) 0;
+      li {
+        a {
+          height: auto;
+          padding: rem-calc(12) rem-calc(16);
+          .icon {
+            float: left;
+            margin: 0 rem-calc(12) 0 0;
+          }
+          .text {
+            display: block;
+            padding: rem-calc(1) 0 0 0;
+          }
+        }
+      }
     }
   }
 }
