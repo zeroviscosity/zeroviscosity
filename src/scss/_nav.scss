@@ -77,32 +77,12 @@ nav {
   }
 }
 
-@media #{$medium} {
+@media #{$medium-up} {
   nav {
     float: left;
     height: 100%;
     overflow-y: auto;
     width: rem-calc(120);
-    .zv-logo-top {
-      background-color: $primary-color;
-      height: rem-calc(35);
-      position: relative;
-      .zv-logo {
-        background: transparent url(/img/logo-0-60.png) no-repeat left top;
-        height: rem-calc(60);
-        left: rem-calc(30);
-        position: absolute;
-        top: rem-calc(10);
-        width: rem-calc(60);
-        &:hover {
-          background: transparent url(/img/logo-1-60.png) no-repeat left top;
-        }
-      }
-    }
-    .zv-logo-bottom {
-      background-color: $background-color;
-      height: rem-calc(10);
-    }
     .zv-nav {
       border-top: rem-calc(1) solid $tertiary-color;
       float: none;
@@ -124,7 +104,7 @@ nav {
   }
 }
 
-@media #{$large} {
+@media #{$large-up} {
   nav {
     width: rem-calc(240);
     .zv-logo-top {
@@ -160,5 +140,60 @@ nav {
         }
       }
     }
+  }
+}
+
+@media #{retina} {
+  nav {
+    .zv-logo-top {
+      .zv-logo {
+        background: transparent url(/img/logo-0-60@2x.png) no-repeat left top;
+        &:hover {
+          background: transparent url(/img/logo-1-60@2x.png) no-repeat left top;
+        }       
+      }
+    }
+    .zv-nav {
+      li {
+        a {
+          .icon {  
+            &.icon-home {
+              background-image: url(/img/icon-0@2x.png);
+            }
+            &.icon-20-questions {
+              background-image: url(/img/icon-1@2x.png);
+            }
+            &.icon-contact {
+              background-image: url(/img/icon-2@2x.png);
+            }
+          }
+          &:hover {
+            .icon {
+              &.icon-home {
+                background-image: url(/img/icon-0-hover@2x.png);
+              }
+              &.icon-20-questions {
+                background-image: url(/img/icon-1-hover@2x.png);
+              }
+              &.icon-contact {
+                background-image: url(/img/icon-2-hover@2x.png);
+              } 
+            }
+          }
+        }
+      }
+    }
+  }  
+  @media #{$large-up} {
+    nav {
+      .zv-logo-top {
+        .zv-logo {
+          background: transparent url(/img/logo-0-120@2x.png) no-repeat left top;
+          &:hover {
+            background: transparent url(/img/logo-1-120@2x.png) no-repeat left top;
+          }
+        }
+      }
+    } 
   }
 }

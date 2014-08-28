@@ -12,6 +12,10 @@ $background-color: #efefef;
 $body-font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 $header-font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 $header-font-weight: 300;
+$retina: "only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (min--moz-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2/1),
+  only screen and (min-device-pixel-ratio: 2)";
 
 @import
   "../../bower_components/foundation/scss/foundation/components/panels",
@@ -97,7 +101,7 @@ blockquote {
   }
 }
 
-@media #{$medium} {
+@media #{$medium-up} {
   html, body {
     height: 100%;
     overflow-y: auto;
@@ -119,7 +123,7 @@ blockquote {
   }
 }
 
-@media #{$large} {
+@media #{$large-up} {
   footer {
     width: rem-calc(240);
   }
