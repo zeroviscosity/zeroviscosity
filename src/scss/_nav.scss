@@ -118,7 +118,7 @@ nav {
   }
 }
 
-@media #{retina} {
+@media #{$retina} {
   nav {
     .zv-logo-top {
       .zv-logo {
