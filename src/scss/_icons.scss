@@ -9,23 +9,23 @@
     background-position: 0 0;
   }
   &.icon-20-questions {
-    background-position: 0 -rem-calc(24);
+    background-position: 0 rem-calc(-24);
   }
   &.icon-contact {
-    background-position: 0 -rem-calc(48);
+    background-position: 0 rem-calc(-48);
   }
 }
 
 a:hover {
   .icon {
     &.icon-home {
-      background-position: rem-calc(24) 0;
+      background-position: rem-calc(-24) 0;
     }
     &.icon-20-questions {
-      background-position: rem-calc(24) rem-calc(-24);
+      background-position: rem-calc(-24) rem-calc(-24);
     }
     &.icon-contact {
-      background-position: rem-calc(24) rem-calc(-48);
+      background-position: rem-calc(-24) rem-calc(-48);
     }
   }
 }

@@ -130,7 +130,10 @@ nav {
         }       
       }
     }
-  }  
+  }
+}
+
+@media #{$retina} {
   @media #{$large-up} {
     nav {
       .zv-logo-top {
