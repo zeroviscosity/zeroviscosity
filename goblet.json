@@ -4,7 +4,14 @@
     "url": "http://zeroviscosity.com"
   },
   "pages": [
+
+    {
+      "title": "Contact",
+      "slug": "contact",
+      "created": "2014-08-28T11:24:54.427Z"
+    }  
   ],
-  "posts": [
+  "posts": [ 
+
   ]
 }
