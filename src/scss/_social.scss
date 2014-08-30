@@ -1,0 +1,52 @@
+.social-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  li {
+    margin: 0 0 rem-calc(16) 0;
+    a {
+      @include radius(rem-calc(4));
+      @include single-transition();
+      display: inline-block;
+      padding: 0 rem-calc(4) rem-calc(4) rem-calc(4);
+      .social-icon {
+        display: inline-block;
+      }
+      .social-handle {
+        display: inline-block;
+        font-size: rem-calc(18);
+        padding: rem-calc(8) rem-calc(16);
+      }
+      &:hover {
+        background: white;
+      }
+    }
+  }
+}
+
+.social-icon {
+  background-color: transparent;
+  background-image: url(/img/social-icons.png);
+  background-size: 40px 160px;
+  height: 40px;
+  vertical-align: middle;
+  width: 40px;
+  &.github {
+    background-position: 0 0;
+  }
+  &.instagram {
+    background-position: 0 40px;
+  }
+  &.linkedin {
+    background-position: 0 80px;
+  }
+  &.twitter {
+    background-position: 0 120px;
+  }
+}
+
+@media #{$retina} {
+  .social-icon {
+    background-image: url(/img/social-icons@2x.png);
+  }
+}
