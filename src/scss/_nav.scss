@@ -15,7 +15,7 @@ nav {
       top: rem-calc(10);
       width: rem-calc(60);
       &:hover {
-        background: transparent url(/img/logo-1-60.png) no-repeat left top;
+        background-image: url(/img/logo-1-60.png);
       }
     }
   }
@@ -93,7 +93,7 @@ nav {
         top: rem-calc(25);
         width: rem-calc(120);
         &:hover {
-          background: transparent url(/img/logo-1-120.png) no-repeat left top;
+          background-image: url(/img/logo-1-120.png);
         }
       }
     }
@@ -124,23 +124,20 @@ nav {
   nav {
     .zv-logo-top {
       .zv-logo {
-        background: transparent url(/img/logo-0-60@2x.png) no-repeat left top;
+        background-image: url(/img/logo-0-60@2x.png);
         &:hover {
-          background: transparent url(/img/logo-1-60@2x.png) no-repeat left top;
+          background-image: url(/img/logo-1-60@2x.png);
         }       
       }
     }
   }
-}
-
-@media #{$retina} {
   @media #{$large-up} {
     nav {
       .zv-logo-top {
         .zv-logo {
-          background: transparent url(/img/logo-0-120@2x.png) no-repeat left top;
+          background-image: url(/img/logo-0-120@2x.png);
           &:hover {
-            background: transparent url(/img/logo-1-120@2x.png) no-repeat left top;
+            background-image: url(/img/logo-1-120@2x.png);
           }
         }
       }
