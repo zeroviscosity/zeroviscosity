@@ -27,21 +27,21 @@
 .social-icon {
   background-color: transparent;
   background-image: url(/img/social-icons.png);
-  background-size: 40px 160px;
-  height: 40px;
+  background-size: rem-calc(40) rem-calc(160);
+  height: rem-calc(40);
   vertical-align: middle;
-  width: 40px;
+  width: rem-calc(40);
   &.github {
     background-position: 0 0;
   }
   &.instagram {
-    background-position: 0 -40px;
+    background-position: 0 rem-calc(-40);
   }
   &.linkedin {
-    background-position: 0 -80px;
+    background-position: 0 rem-calc(-80);
   }
   &.twitter {
-    background-position: 0 -120px;
+    background-position: 0 rem-calc(-120);
   }
 }
 

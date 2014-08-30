@@ -1,31 +1,31 @@
 .icon {
   background-color: transparent;
   background-image: url(/img/icons.png);
-  background-size: 48px 72px;
+  background-size: rem-calc(48) rem-calc(72);
   display: block;
-  height: 24px;
-  width: 24px;
+  height: rem-calc(24);
+  width: rem-calc(24);
   &.icon-home {
     background-position: 0 0;
   }
   &.icon-20-questions {
-    background-position: 0 -24px;
+    background-position: 0 -rem-calc(24);
   }
   &.icon-contact {
-    background-position: 0 -48px;
+    background-position: 0 -rem-calc(48);
   }
 }
 
 a:hover {
   .icon {
     &.icon-home {
-      background-position: 24px 0;
+      background-position: rem-calc(24) 0;
     }
     &.icon-20-questions {
-      background-position: 24px -24px;
+      background-position: rem-calc(24) rem-calc(-24);
     }
     &.icon-contact {
-      background-position: 24px -48px;
+      background-position: rem-calc(24) rem-calc(-48);
     }
   }
 }
