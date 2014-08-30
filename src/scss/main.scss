@@ -43,12 +43,12 @@ footer {
 }
 
 a {
-  color: darken($primary-color, 10%);
+  color: darken($primary-color, 20%);
   &:visited {
-    color: darken($primary-color, 10%);
+    color: darken($primary-color, 20%);
   }
   &:hover {
-    color: darken($primary-color, 20%);
+    color: darken($primary-color, 10%);
   }
 }
 
@@ -136,4 +136,6 @@ blockquote {
   }
 }
 
-@import "obsidian";
+@import 
+  "icons",
+  "obsidian";

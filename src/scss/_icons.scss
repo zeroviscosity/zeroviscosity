@@ -1,0 +1,61 @@
+.icon {
+  background-color: transparent;
+  background-image: url(/img/icons.png);
+  background-size: 48px 72px;
+  display: block;
+  height: 24px;
+  width: 24px;
+  &.icon-home {
+    background-position: 0 0;
+  }
+  &.icon-20-questions {
+    background-position: 0 -24px;
+  }
+  &.icon-contact {
+    background-position: 0 -48px;
+  }
+}
+
+a:hover {
+  .icon {
+    &.icon-home {
+      background-position: 24px 0;
+    }
+    &.icon-20-questions {
+      background-position: 24px -24px;
+    }
+    &.icon-contact {
+      background-position: 24px -48px;
+    }
+  }
+}
+
+.social-icon {
+  background-color: transparent;
+  background-image: url(/img/social-icons.png);
+  background-size: 40px 160px;
+  display: block;
+  height: 40px;
+  width: 40px;
+  &.github {
+    background-position: 0 0;
+  }
+  &.instagram {
+    background-position: 0 40px;
+  }
+  &.linkedin {
+    background-position: 0 80px;
+  }
+  &.twitter {
+    background-position: 0 120px;
+  }
+}
+
+@media #{$retina} {
+  .icon {
+    background-image: url(/img/icons@2x.png);
+  }
+  .social-icon {
+    background-image: url(/img/social-icons@2x.png);
+  }
+}

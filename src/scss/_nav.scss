@@ -37,22 +37,8 @@ nav {
         margin: 0;
         padding: rem-calc(5) rem-calc(20) 0 rem-calc(20);
         .icon {
-          background-color: transparent;
-          background-repeat: no-repeat;
-          background-position: 0 0;
           display: block;
-          height: rem-calc(24);
           margin: 0;
-          width: rem-calc(24);
-          &.icon-home {
-            background-image: url(/img/icon-0.png);
-          }
-          &.icon-20-questions {
-            background-image: url(/img/icon-1.png);
-          }
-          &.icon-contact {
-            background-image: url(/img/icon-2.png);
-          }
         }
         .text {
           display: none;
@@ -60,17 +46,6 @@ nav {
         &:hover {
           background-color: $tertiary-color;
           color: $primary-color;
-          .icon {
-            &.icon-home {
-              background-image: url(/img/icon-0-hover.png);
-            }
-            &.icon-20-questions {
-              background-image: url(/img/icon-1-hover.png);
-            }
-            &.icon-contact {
-              background-image: url(/img/icon-2-hover.png);
-            } 
-          }
         }
       }
     }
@@ -151,36 +126,6 @@ nav {
         &:hover {
           background: transparent url(/img/logo-1-60@2x.png) no-repeat left top;
         }       
-      }
-    }
-    .zv-nav {
-      li {
-        a {
-          .icon {  
-            &.icon-home {
-              background-image: url(/img/icon-0@2x.png);
-            }
-            &.icon-20-questions {
-              background-image: url(/img/icon-1@2x.png);
-            }
-            &.icon-contact {
-              background-image: url(/img/icon-2@2x.png);
-            }
-          }
-          &:hover {
-            .icon {
-              &.icon-home {
-                background-image: url(/img/icon-0-hover@2x.png);
-              }
-              &.icon-20-questions {
-                background-image: url(/img/icon-1-hover@2x.png);
-              }
-              &.icon-contact {
-                background-image: url(/img/icon-2-hover@2x.png);
-              } 
-            }
-          }
-        }
       }
     }
   }  
