@@ -5,17 +5,20 @@
   li {
     margin: 0 0 rem-calc(16) 0;
     a {
-      @include radius(rem-calc(4));
+      @include radius(rem-calc(5));
       @include single-transition();
-      display: inline-block;
-      padding: 0 rem-calc(4) rem-calc(4) rem-calc(4);
+      @include clearfix();
+      display: block;
+      padding: rem-calc(4);
+      width: rem-calc(200);
       .social-icon {
-        display: inline-block;
+        display: block;
+        float: left;
       }
       .social-handle {
-        display: inline-block;
+        display: block;
         font-size: rem-calc(18);
-        padding: rem-calc(8) rem-calc(16);
+        margin: rem-calc(5) 0 0 rem-calc(50);
       }
       &:hover {
         background: white;
