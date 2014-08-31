@@ -23,6 +23,12 @@ gulp.task('sass', function () {
         .pipe(livereload());
 });
 
+gulp.task('sass:prod', function () {
+    gulp.src(paths.sass)
+        .pipe(sass({ outputStyle: 'compressed' }))
+        .pipe(gulp.dest(paths.css));
+});
+
 gulp.task('develop', function () {
     nodemon({ script: 'app.js', ext: 'jade js scss' })
         .on('change', ['lint', 'sass']);
