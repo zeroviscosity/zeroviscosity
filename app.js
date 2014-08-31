@@ -1,7 +1,7 @@
 var express = require('express'),
     goblet = require('./lib/goblet'),
     app = express(),
-    port = process.env.NODE_PORT || 3001;
+    port = process.env.NODE_PORT || 3000;
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
