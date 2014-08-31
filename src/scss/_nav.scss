@@ -14,9 +14,9 @@ nav {
       position: absolute;
       top: rem-calc(10);
       width: rem-calc(60);
-      &:hover {
-        background-image: url(/img/logo-1-60.png);
-      }
+      //&:hover {
+        //background-image: url(/img/logo-1-60.png);
+      //}
     }
   }
   .zv-logo-bottom {
@@ -92,9 +92,9 @@ nav {
         left: rem-calc(60);
         top: rem-calc(25);
         width: rem-calc(120);
-        &:hover {
-          background-image: url(/img/logo-1-120.png);
-        }
+        //&:hover {
+          //background-image: url(/img/logo-1-120.png);
+        //}
       }
     }
     .zv-logo-bottom {
