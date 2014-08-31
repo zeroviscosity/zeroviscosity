@@ -125,9 +125,9 @@ nav {
     .zv-logo-top {
       .zv-logo {
         background-image: url(/img/logo-0-60@2x.png);
-        &:hover {
-          background-image: url(/img/logo-1-60@2x.png);
-        }       
+        //&:hover {
+          //background-image: url(/img/logo-1-60@2x.png);
+        //}       
       }
     }
   }
@@ -136,9 +136,9 @@ nav {
       .zv-logo-top {
         .zv-logo {
           background-image: url(/img/logo-0-120@2x.png);
-          &:hover {
-            background-image: url(/img/logo-1-120@2x.png);
-          }
+          //&:hover {
+            //background-image: url(/img/logo-1-120@2x.png);
+          //}
         }
       }
     } 
