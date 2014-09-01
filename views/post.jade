@@ -17,19 +17,17 @@ block wrapper
 
     div.zv-content
       block content
-    
+   
     div#disqus_thread
     script(type="text/javascript").
-      var disqus_shortname = 'kentenglish';
+      var disqus_shortname = 'zeroviscosity';
       (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
       })();
-    noscript 
-      span Please enable JavaScript to view the 
-      a(href="http://disqus.com/?ref_noscript") comments powered by Disqus.
-    a.dsq-brlink(href="http://disqus.com") 
-      span comments powered by 
-      span.logo-disqus Disqus
- 
+    noscript Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    a.dsq-brlink(href="http://disqus.com") comments powered by <span class="logo-disqus">Disqus</span>
+
