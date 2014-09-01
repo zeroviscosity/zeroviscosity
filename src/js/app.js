@@ -31,7 +31,7 @@
                 ratio,
                 left, 
                 edge;
-
+            
             if (w > device.w) {
                 ratio = device.w / w;
                 w = device.w;
@@ -47,7 +47,6 @@
             if (evt.clientX < device.w / 2) {
                 left = 0;
                 edge = evt.clientX + w;
-                console.log(edge, device.w);
                 if (edge > device.w) {
                     left -= edge - device.w - buffer;
                 }
@@ -66,5 +65,4 @@
             wrp.classList.toggle('active');
         });
     });
-
 })(window, window.document);
