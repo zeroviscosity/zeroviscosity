@@ -7,15 +7,20 @@
     {
       "title": "20 Questions",
       "slug": "20-questions",
-      "created": "2014-08-26T09:37:48.379Z"
+      "created": "2014-08-31T21:37:48.379Z"
     }, 
     {
       "title": "Contact",
       "slug": "contact",
-      "created": "2014-08-28T11:24:54.427Z"
+      "created": "2014-08-30T16:24:54.427Z"
     }  
   ],
   "posts": [ 
-
+    {
+      "title": "From Zero to Data Viz Hero with D3.js: Part 1 - A Pie/Donut Chart",
+      "slug": "from-zero-to-data-viz-hero-with-d3-js-part-1-a-pie-donut-chart",
+      "created": "2014-09-01T21:32:17.329Z",
+      "tags": ["Data Visualizaiton", "D3.js", "JavaScript", "Open Data"]
+    }
   ]
 }
