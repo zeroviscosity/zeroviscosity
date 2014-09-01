@@ -49,3 +49,4 @@ gulp.task('develop', function () {
 });
 
 gulp.task('default', ['lint', 'js', 'sass', 'develop']);
+gulp.task('prod', ['js', 'sass']);
