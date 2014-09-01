@@ -14,7 +14,7 @@ block wrapper
           h2
             a(href="/post/#{post.slug}")=post.title
           div.clearfix.zv-meta
-            div.left.zv-date=post.created
+            div.left.zv-date=post.date
             div.right.zv-tags
               for tag in post.tags
                 a.left.zv-tag(href="/?tag=#{tag}")=tag
