@@ -1,69 +1,70 @@
-(function(window) {
+(function(window, document) {
     'use strict';
-    
-    // Boo
-    if (!window.history) return;
-/*
-    var contentEl = document.getElementById('content'),
-        photoEl = document.getElementById('photo'),
-        linkEls = document.getElementsByTagName('a'),
-        cats = {
-          fluffy: {
-            content: 'Fluffy!',
-            photo: 'http://placekitten.com/200/200'
-          },
-          socks: {
-            content: 'Socks!',
-            photo: 'http://placekitten.com/280/280'
-          },
-          whiskers: {
-            content: 'Whiskers!',
-            photo: 'http://placekitten.com/350/350'
-          },
-          bob: {
-            content: 'Just Bob.',
-            photo: 'http://placekitten.com/320/270'
-          }
-        };
 
-    // Switcheroo!
-    function updateContent(data) {
-      if (data == null)
-        return;
+    var wrps = document.querySelectorAll('.image-wrapper');
 
-      contentEl.textContent = data.content;
-      photoEl.src = data.photo;
-    }
+    Array.prototype.forEach.call(wrps, function(wrp, i) {
+        var width = parseInt(wrp.getAttribute('data-width'), 10),
+            height = parseInt(wrp.getAttribute('data-height'), 10),
+            src = wrp.getAttribute('data-src'),
+            icon = document.createElement('span'),
+            popup = document.createElement('span'),
+            img = new window.Image(width, height);
 
-    // Load some mock JSON data into the page
-    function clickHandler(event) {
-      var cat = event.target.getAttribute('href').split('/').pop(),
-          data = cats[cat] || null; // In reality this could be an AJAX request
+        icon.className = 'image-icon';
+        popup.className = 'image-popup';
 
-      updateContent(data);
+        img.src = src;
+        
+        popup.appendChild(img);
+        wrp.appendChild(icon);
+        wrp.appendChild(popup);
 
-      // Add an item to the history log
-      history.pushState(data, event.target.textContent, event.target.href);
+        wrp.addEventListener('click', function(evt) {
+            var buffer = 20, // Icon width
+                w = width, 
+                h = height,
+                device = {
+                    w: Math.max(document.documentElement.clientWidth, window.innerWidth || 0) - 2 * buffer,
+                    h: Math.max(document.documentElement.clientHeight, window.innerHeight || 0 - 2 * buffer) 
+                },
+                ratio,
+                left, 
+                edge;
 
-      return event.preventDefault();
-    }
+            if (w > device.w) {
+                ratio = device.w / w;
+                w = device.w;
+                h *= ratio;
+            }
+            
+            if (h > device.h) {
+                ratio = device.h / h;
+                h = device.h;
+                w *= ratio;
+            }
+            
+            if (evt.clientX < device.w / 2) {
+                left = 0;
+                edge = evt.clientX + w;
+                console.log(edge, device.w);
+                if (edge > device.w) {
+                    left -= edge - device.w - buffer;
+                }
+            } else {
+                left = buffer - w;
+                edge = evt.clientX + left;
+                if (edge < buffer / 2) {
+                    left += buffer - edge;
+                }
+            }
 
-    // Attach event listeners
-    for (var i = 0, l = linkEls.length; i < l; i++) {
-      linkEls[i].addEventListener('click', clickHandler, true);
-    }
-
-    // Revert to a previously saved state
-    window.addEventListener('popstate', function(event) {
-      console.log('popstate fired!');
-
-      updateContent(event.state);
+            popup.style.width = w + 'px';
+            popup.style.height = h + 'px';
+            popup.style.left = left + 'px'; 
+            
+            wrp.classList.toggle('active');
+        });
     });
 
-    // Store the initial content so we can revisit it later
-    history.replaceState({
-      content: contentEl.textContent,
-      photo: photoEl.src
-    }, document.title, document.location.href);
-*/
-})(window);
+})(window, window.document);
