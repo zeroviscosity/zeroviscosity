@@ -1,0 +1,46 @@
+.image-wrapper {
+  display: inline-block;
+  position: relative;
+  .image-icon {
+    background-color: transparent;
+    background-image: url(/img/image-icon.png);
+    background-position: 0 0;
+    background-size: rem-calc(40) rem-calc(20);
+    cursor: pointer;
+    display: inline-block;
+    height: rem-calc(20);
+    vertical-align: middle;
+    width: rem-calc(20);
+    &:hover {
+      background-position: rem-calc(-20) 0;
+    }
+  }
+  .image-popup {
+    @include single-transition(opacity);
+    -webkit-box-shadow: 0 0 rem-calc(20) 0 rgba(52, 52, 52, 0.3);
+    box-shadow: 0 0 rem-calc(20) 0 rgba(52, 52, 52, 0.3);
+    display: none;
+    opacity: 0;
+    position: absolute;
+    top: rem-calc(25);
+    z-index: 100;
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+  &.active {
+    .image-popup {
+      display: block;
+      opacity: 1;
+    }
+  }
+}
+
+@media #{$retina} {
+  .image-wrapper {
+    .image-icon {
+      background-image: url(/img/image-icon@2x.png);
+    }
+  }
+}
