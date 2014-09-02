@@ -2,14 +2,17 @@
     'use strict';
 
     var wrps = document.querySelectorAll('.image-wrapper'),
-        loading = document.querySelector('#loading');
+        loading = document.querySelector('#loading'),
+        s3 = 'https://s3.amazonaws.com/zeroviscosity/';
 
     Array.prototype.forEach.call(wrps, function(wrp, i) {
         var width = parseInt(wrp.getAttribute('data-width'), 10),
             height = parseInt(wrp.getAttribute('data-height'), 10),
-            src = wrp.getAttribute('data-src'),
+            src = wrp.getAttribute('data-s3-src'),
             icon = document.createElement('span'),
             popup = document.createElement('span');
+        
+        src = (src) ? s3 + src : wrp.getAttribute('data-src');
         
         wrp.classList.add('image-unloaded');
         icon.classList.add('image-icon');
