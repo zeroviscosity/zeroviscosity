@@ -13,6 +13,15 @@ if (env === 'development') {
     app.disable('verbose errors');
 }
 
+require('jade').filters.code = function(block) {
+    return block
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/#/g, '&#35;');
+};
+
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
