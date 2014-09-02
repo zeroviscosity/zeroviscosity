@@ -16,7 +16,8 @@
     }
   }
   .image-popup {
-    @include single-transition(opacity);
+    @include single-transition();
+    background-color: $background-color;
     -webkit-box-shadow: 0 0 rem-calc(20) 0 rgba(52, 52, 52, 0.3);
     box-shadow: 0 0 rem-calc(20) 0 rgba(52, 52, 52, 0.3);
     display: none;
@@ -25,7 +26,9 @@
     top: rem-calc(25);
     z-index: 100;
     img {
+      @include single-transition();
       height: 100%;
+      opacity: 0;
       width: 100%;
     }
   }

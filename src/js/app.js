@@ -1,22 +1,21 @@
 (function(window, document) {
     'use strict';
 
-    var wrps = document.querySelectorAll('.image-wrapper');
+    var wrps = document.querySelectorAll('.image-wrapper'),
+        loading = document.querySelector('#loading');
 
     Array.prototype.forEach.call(wrps, function(wrp, i) {
         var width = parseInt(wrp.getAttribute('data-width'), 10),
             height = parseInt(wrp.getAttribute('data-height'), 10),
             src = wrp.getAttribute('data-src'),
             icon = document.createElement('span'),
-            popup = document.createElement('span'),
-            img = new window.Image(width, height);
-
-        icon.className = 'image-icon';
-        popup.className = 'image-popup';
-
-        img.src = src;
+            popup = document.createElement('span');
         
-        popup.appendChild(img);
+        wrp.classList.add('image-unloaded');
+        icon.classList.add('image-icon');
+        popup.classList.add('image-popup');
+
+        popup.appendChild(loading.cloneNode(true));
         wrp.appendChild(icon);
         wrp.appendChild(popup);
 
@@ -30,7 +29,8 @@
                 },
                 ratio,
                 left, 
-                edge;
+                edge,
+                img;
             
             if (w > device.w) {
                 ratio = device.w / w;
@@ -56,6 +56,21 @@
                 if (edge < buffer / 2) {
                     left += buffer - edge;
                 }
+            }
+            
+            if (wrp.classList.contains('image-unloaded')) {
+                wrp.classList.remove('image-unloaded');
+                wrp.classList.add('image-loading');
+                img = new window.Image(width, height);
+                img.style.opacity = 0;
+                img.onload = function() {
+                    popup.innerHTML = '';
+                    popup.appendChild(img);
+                    img.style.opacity = 1;
+                    wrp.classList.remove('image-loading');
+                    wrp.classList.add('image-loaded');
+                };
+                img.src = src;
             }
 
             popup.style.width = w + 'px';
