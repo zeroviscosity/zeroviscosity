@@ -7,7 +7,8 @@ html(lang="en")
     title=title
     link(rel="canonical", href="#{url}")
     link(rel="shortcut icon", type="image/x-icon", href="/favicon.ico")
-    link(rel="stylesheet", href="/css/main.css")
+    style.
+      html, body { background: #efefef; }
   body 
     nav.clearfix
       div.zv-logo-top
@@ -36,7 +37,18 @@ html(lang="en")
             div.loading-2
 
     footer &copy;2014 Kent English
- 
+    script.
+      var cb = function() {
+          var l = document.createElement('link'), 
+              h = document.getElementsByTagName('head')[0]; 
+          l.rel = 'stylesheet';
+          l.href = '/css/main.css';
+          h.parentNode.insertBefore(l, h);
+      };
+      var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+          webkitRequestAnimationFrame || msRequestAnimationFrame;
+      if (raf) raf(cb);
+      else window.addEventListener('load', cb);
     script(src="/js/lib/highlight.pack.js")
     script.
       hljs.initHighlightingOnLoad();

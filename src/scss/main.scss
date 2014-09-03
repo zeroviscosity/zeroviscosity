@@ -3,21 +3,8 @@
 @import url("//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700");
 @import
   "../../bower_components/foundation/scss/normalize",
-  "../../bower_components/foundation/scss/foundation/components/global";
-
-$primary-color: #88D21E;
-$secondary-color: #727272;
-$tertiary-color: #575757;
-$background-color: #efefef;
-$body-font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-$header-font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-$header-font-weight: 300;
-$retina: "only screen and (-webkit-min-device-pixel-ratio: 2),
-  only screen and (min--moz-device-pixel-ratio: 2),
-  only screen and (-o-min-device-pixel-ratio: 2/1),
-  only screen and (min-device-pixel-ratio: 2)";
-
-@import
+  "../../bower_components/foundation/scss/foundation/components/global",
+  "settings",
   "../../bower_components/foundation/scss/foundation/components/buttons",
   "../../bower_components/foundation/scss/foundation/components/panels",
   "../../bower_components/foundation/scss/foundation/components/type",
