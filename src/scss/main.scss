@@ -18,6 +18,7 @@ $retina: "only screen and (-webkit-min-device-pixel-ratio: 2),
   only screen and (min-device-pixel-ratio: 2)";
 
 @import
+  "../../bower_components/foundation/scss/foundation/components/buttons",
   "../../bower_components/foundation/scss/foundation/components/panels",
   "../../bower_components/foundation/scss/foundation/components/type",
   "../../bower_components/foundation/scss/foundation/components/visibility";
@@ -166,6 +167,7 @@ blockquote {
 @import 
   "icons",
   "images",
+  "lazy-code",
   "loading",
   "nav",
   "obsidian",
