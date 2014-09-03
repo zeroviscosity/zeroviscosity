@@ -9,16 +9,18 @@
         var width = parseInt(wrp.getAttribute('data-width'), 10),
             height = parseInt(wrp.getAttribute('data-height'), 10),
             src = wrp.getAttribute('data-s3-src'),
+            ldg = loading.cloneNode(true),
             icon = document.createElement('span'),
             popup = document.createElement('span');
         
         src = (src) ? s3 + src : wrp.getAttribute('data-src');
         
         wrp.classList.add('image-unloaded');
+        ldg.classList.add('loading-popup');
         icon.classList.add('image-icon');
         popup.classList.add('image-popup');
 
-        popup.appendChild(loading.cloneNode(true));
+        popup.appendChild(ldg);
         wrp.appendChild(icon);
         wrp.appendChild(popup);
 
