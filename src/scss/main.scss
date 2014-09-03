@@ -11,8 +11,10 @@
   "../../bower_components/foundation/scss/foundation/components/visibility";
 
 html, body {
+  @include single-transition(opacity);
   background-color: $background-color;
   font-family: $body-font-family;
+  opacity: 1;
 }
 
 pre {
