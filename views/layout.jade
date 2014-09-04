@@ -40,18 +40,19 @@ html(lang="en")
 
     footer &copy;2014 Kent English
     script.
-      var cb = function() {
-          var l = document.createElement('link'), 
-              h = document.getElementsByTagName('head')[0]; 
-          l.rel = 'stylesheet';
-          l.href = '/css/main.css';
-          h.appendChild(l);
-          //h.parentNode.insertBefore(l, h);
-      };
-      var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-          webkitRequestAnimationFrame || msRequestAnimationFrame;
-      if (raf) raf(cb);
-      else window.addEventListener('load', cb);
+      (function(w, d) {
+          var cb = function() {
+              var l = d.createElement('link'), 
+                  h = d.getElementsByTagName('head')[0]; 
+              l.rel = 'stylesheet';
+              l.href = '/css/main.css';
+              h.appendChild(l);
+          };
+          var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+              webkitRequestAnimationFrame || msRequestAnimationFrame;
+          if (raf) raf(cb);
+          else w.addEventListener('load', cb);
+      })(window, document);
     script(src="/js/lib/highlight.pack.js")
     script.
       hljs.initHighlightingOnLoad();
