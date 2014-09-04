@@ -6,16 +6,13 @@ nav {
     height: rem-calc(35);
     position: relative;
     .zv-logo {
-      background: transparent url(/img/logo-0-60.png) no-repeat left top;
+      background: transparent url(/img/logo-60.png) no-repeat left top;
       background-size: rem-calc(60) rem-calc(60);
       height: rem-calc(60);
       left: rem-calc(30);
       position: absolute;
       top: rem-calc(10);
       width: rem-calc(60);
-      //&:hover {
-        //background-image: url(/img/logo-1-60.png);
-      //}
     }
   }
   .zv-logo-bottom {
@@ -85,15 +82,12 @@ nav {
     .zv-logo-top {
       height: rem-calc(75);
       .zv-logo {
-        background: transparent url(/img/logo-0-120.png) no-repeat left top;
+        background: transparent url(/img/logo-120.png) no-repeat left top;
         background-size: rem-calc(120) rem-calc(120);
         height: rem-calc(120);
         left: rem-calc(60);
         top: rem-calc(25);
         width: rem-calc(120);
-        //&:hover {
-          //background-image: url(/img/logo-1-120.png);
-        //}
       }
     }
     .zv-logo-bottom {
@@ -123,10 +117,7 @@ nav {
   nav {
     .zv-logo-top {
       .zv-logo {
-        background-image: url(/img/logo-0-60@2x.png);
-        //&:hover {
-          //background-image: url(/img/logo-1-60@2x.png);
-        //}       
+        background-image: url(/img/logo-60@2x.png);
       }
     }
   }
@@ -134,10 +125,7 @@ nav {
     nav {
       .zv-logo-top {
         .zv-logo {
-          background-image: url(/img/logo-0-120@2x.png);
-          //&:hover {
-            //background-image: url(/img/logo-1-120@2x.png);
-          //}
+          background-image: url(/img/logo-120@2x.png);
         }
       }
     } 
