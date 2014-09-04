@@ -6,7 +6,6 @@ nav {
     height: rem-calc(35);
     position: relative;
     .zv-logo {
-      @include single-transition();
       background: transparent url(/img/logo-0-60.png) no-repeat left top;
       background-size: rem-calc(60) rem-calc(60);
       height: rem-calc(60);
