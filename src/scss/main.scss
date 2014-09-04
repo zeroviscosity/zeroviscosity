@@ -24,6 +24,18 @@ pre {
   }
 }
 
+section {
+  border-bottom: rem-calc(1) solid #ccc;
+  margin: rem-calc(8) 0 rem-calc(32) 0;
+  padding-bottom: rem-calc(16);
+  > h3 {
+    @include clearfix();
+    .paragraph {
+      float: right;
+    }
+  }
+}
+
 footer {
   font-size: rem-calc(12);
   padding: rem-calc(20) 0 rem-calc(10) 0;

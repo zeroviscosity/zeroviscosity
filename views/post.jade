@@ -7,14 +7,15 @@ block head
   meta(property="og:site_name", content="#{og.siteName}")
 
 block wrapper
-  div.zv-post
-    h1=post.title
-    h3=post.subtitle
-    div.zv-meta
-      div.zv-date=post.date
-      div.zv-tags
-        for tag in post.tags
-          a.left.zv-tag(href="/?tag=#{tag}")=tag
+  article.zv-post
+    header
+      h1=post.title
+      h3=post.subtitle
+      div.zv-meta
+        div.zv-date=post.date
+        div.zv-tags
+          for tag in post.tags
+            a.left.zv-tag(href="/?tag=#{tag}")=tag
 
     div.zv-content
       block content

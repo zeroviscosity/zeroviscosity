@@ -1,70 +1,75 @@
 extends ../post
 
 block content
-  p D3.js, in case you are unfamiliar with it, is a powerful and flexible JavaScript library that can be used to create interactive data visualizations with HTML, SVG and CSS. D3 stands for Data-Driven Documents <span class="image-wrapper" data-width="430" data-height="538" data-s3-src="#{post.slug}/i-dont-always-d3.jpg"></span> and it is behind some of the most innovative and engaging visualizations currently on the web. On <a href="http://d3js.org/" target="_blank">d3js.org</a> you can find a wide variety of examples in addition to extensive documentation. I think it is one of the most exciting projects in the JavaScript ecosystem.
-  p Even experienced JavaScript developers can find D3 daunting at first. There are <em>so</em> many methods available. The key, however, is to keep calm <span class="image-wrapper" data-width="400" data-height="225" data-s3-src="#{post.slug}/panic.gif"></span> and take it one step at a time. Luckily, D3 makes that easy because each method has one single task. It reminds me of <a href="http://www.steamwhistle.ca/" target="_blank">Steam Whistle</a>, a brewing company here in Toronto, whose motto is:
-  blockquote Do one thing really, really well. <span class="image-wrapper" data-width="400" data-height="250" data-s3-src="#{post.slug}/steam-whistle.jpg"></span>
-  hr
-  h3#v1 Step 1: Our first taste of pie
-  p If you were to look at the HTML behind that chart, you would see the following:
-  pre
-    code.html
-      :code
-        <svg width="960" height="500">
-          <g transform="translate(480, 250)">
-            <path d="M-141.06846055019358,-194.16407864998737A240,240 0 0,1 -4.408728470783257e-14,-240L0,0Z" fill="#1f77b4"></path>
-            <path d="M-228.25356391083685,74.16407864998737A240,240 0 0,1 -141.06846055019358,-194.16407864998737L0,0Z" fill="#ff7f0e"></path>
-            <path d="M141.06846055019355,194.1640786499874A240,240 0 0,1 -228.25356391083685,74.16407864998737L0,0Z" fill="#2ca02c"></path>
-            <path d="M0,-240A240,240 0 0,1 141.06846055019355,194.1640786499874L0,0Z" fill="#d62728"></path>
-          </g>
-        </svg>
-  p For now let's just ignore the stuff in the <code>d</code> attribute:
-  pre
-    code.html
-      :code
-        <svg width="960" height="500">
-          <g transform="translate(480, 250)">
-            <path d="M-141.06..." fill="#1f77b4"></path>
-            <path d="M-228.25..." fill="#ff7f0e"></path>
-            <path d="M141.068..." fill="#2ca02c"></path>
-            <path d="M0,-240A..." fill="#d62728"></path>
-          </g>
-        </svg>
-  p That doesn't look too bad. It's actually pretty easy to see how that corresponds to the pie chart above:
-  ul
-    li There's a <code>svg</code> wrapper that defines the width and height.
-    li There's a <code>g</code> element that centers the chart (note that 480 and 250 are half of 960 and 500, respectively).
-    li There are four <code>path</code> elements that correspond to the four segments in the pie chart, each of which defines a <code>fill</code> colour and a <code>d</code> attribute that specifies the shape and position.
-  p If the <code>d</code> attribute wasn't so complicated you could code the whole thing by hand. D3 is there to do the heavy lifting for you, so let's look at how we can build this up.
-  p We'll start by defining some data. Later on we'll load in some parking ticket data but for now let's just create a simple array with four elements:
-  pre
-    code.javascript.
-      var data = [10, 20, 30, 40];
-  p These four elements correspond to the four segments in our chart and to the four <code>path</code> elements in the SVG code above. 
-  p Next we'll define some dimensions for our chart:
-  pre
-    code.javascript.
-      var width = 960,
-        height = 500,
-        radius = Math.min(width, height) / 2;
-  p The width and height are self-explanatory, and since pie charts are round, we need a radius, which we set to half of the smaller of the two dimensions. But now it's time to put D3 to work for us:
-  pre
-    code.javascript.
-      var color = d3.scale.category10();
-  p This line defines a color scale for us. 
-  div#v5-js.lazy-code(data-s3-src="d3-js-step-by-step-part-1-a-pie-donut-chart/step-1-pie.js", data-language="javascript")
-    button.expand.small.secondary Display Final JavaScript
-  hr
-  h3#v2 Bring on the Donuts <span class="image-wrapper" data-width="318" data-height="232" data-s3-src="#{post.slug}/donuts.gif"></span>
-  p Food-wise, I much prefer pie to donuts, but when it comes to data viz, donuts are where it's at these days. But how can we make our pie into a donut? I suppose we could create a white circle, make sure its z-index is over 9000, and then position it absolutely over top of the pie. That could work, but it's a terrible idea <span class="image-wrapper" data-width="300" data-height="216" data-s3-src="#{post.slug}/doing-it-wrong.gif"></span>. Instead we're going to make one small change to the code:
-  pre
-    code.javascript.
-      var arc = d3.svg.arc()
-        .outerRadius(radius - 10)
-        .innerRadius(radius - 110); // New
-  p Ta da! Just like that we've transformed our pie chart into a donut chart. The <code>innerRadius</code> value defaults to 0, which results in a pie. In this case we've set it to be 100px less than the <code>outerRadius</code>. That difference of 100px defines the width of the donut.
-  p View it on <a href="">GitHub</a>, <a href="">S3</a> or you can view it here:
-  div#v5.lazy-code(data-s3-src="d3-js-step-by-step-part-1-a-pie-donut-chart/step-6-animation.html", data-language="html")
-    button.expand.small.secondary Display Final Code
-  div.panel This post grew out of a talk I did on D3 at a <a href="">DVTO</a> meetup. The <a href="">original slides</a> may also be of interest.
-block script
+  section
+    p D3.js, in case you are unfamiliar with it, is a powerful and flexible JavaScript library that can be used to create interactive data visualizations with HTML, SVG and CSS. D3 stands for Data-Driven Documents <span class="image-wrapper" data-width="430" data-height="538" data-s3-src="#{post.slug}/i-dont-always-d3.jpg"></span> and it is behind some of the most innovative and engaging visualizations currently on the web. On <a href="http://d3js.org/" target="_blank">d3js.org</a> you can find a wide variety of examples in addition to extensive documentation. I think it is one of the most exciting projects in the JavaScript ecosystem.
+    p Even experienced JavaScript developers can find D3 daunting at first. There are <em>so</em> many methods available. The key, however, is to keep calm <span class="image-wrapper" data-width="400" data-height="225" data-s3-src="#{post.slug}/panic.gif"></span> and take it one step at a time. Luckily, D3 makes that easy because each method has one single task. It reminds me of <a href="http://www.steamwhistle.ca/" target="_blank">Steam Whistle</a>, a brewing company here in Toronto, whose motto is:
+    blockquote Do one thing really, really well. <span class="image-wrapper" data-width="400" data-height="250" data-s3-src="#{post.slug}/steam-whistle.jpg"></span>
+      
+  section
+    h3#step-1 Step 1: Our first taste of pie <a class="paragraph"href="#step-1">&para;</a> 
+    p If you were to look at the HTML behind that chart, you would see the following:
+    pre
+      code.html
+        :code
+          <svg width="960" height="500">
+            <g transform="translate(480, 250)">
+              <path d="M-141.06846055019358,-194.16407864998737A240,240 0 0,1 -4.408728470783257e-14,-240L0,0Z" fill="#1f77b4"></path>
+              <path d="M-228.25356391083685,74.16407864998737A240,240 0 0,1 -141.06846055019358,-194.16407864998737L0,0Z" fill="#ff7f0e"></path>
+              <path d="M141.06846055019355,194.1640786499874A240,240 0 0,1 -228.25356391083685,74.16407864998737L0,0Z" fill="#2ca02c"></path>
+              <path d="M0,-240A240,240 0 0,1 141.06846055019355,194.1640786499874L0,0Z" fill="#d62728"></path>
+            </g>
+          </svg>
+    p For now let's just ignore the stuff in the <code>d</code> attribute:
+    pre
+      code.html
+        :code
+          <svg width="960" height="500">
+            <g transform="translate(480, 250)">
+              <path d="M-141.06..." fill="#1f77b4"></path>
+              <path d="M-228.25..." fill="#ff7f0e"></path>
+              <path d="M141.068..." fill="#2ca02c"></path>
+              <path d="M0,-240A..." fill="#d62728"></path>
+            </g>
+          </svg>
+    p That doesn't look too bad. It's actually pretty easy to see how that corresponds to the pie chart above:
+    ul
+      li There's a <code>svg</code> wrapper that defines the width and height.
+      li There's a <code>g</code> element that centers the chart (note that 480 and 250 are half of 960 and 500, respectively).
+      li There are four <code>path</code> elements that correspond to the four segments in the pie chart, each of which defines a <code>fill</code> colour and a <code>d</code> attribute that specifies the shape and position.
+    p If the <code>d</code> attribute wasn't so complicated you could code the whole thing by hand. D3 is there to do the heavy lifting for you, so let's look at how we can build this up.
+    p We'll start by defining some data. Later on we'll load in some parking ticket data but for now let's just create a simple array with four elements:
+    pre
+      code.javascript.
+        var data = [10, 20, 30, 40];
+    p These four elements correspond to the four segments in our chart and to the four <code>path</code> elements in the SVG code above. 
+    p Next we'll define some dimensions for our chart:
+    pre
+      code.javascript.
+        var width = 960,
+          height = 500,
+          radius = Math.min(width, height) / 2;
+    p The width and height are self-explanatory, and since pie charts are round, we need a radius, which we set to half of the smaller of the two dimensions. But now it's time to put D3 to work for us:
+    pre
+      code.javascript.
+        var color = d3.scale.category10();
+    p This line defines a color scale for us. 
+    div#v5-js.lazy-code(data-s3-src="d3-js-step-by-step-part-1-a-pie-donut-chart/step-1-pie.js", data-language="javascript")
+      button.expand.small.secondary Display Final JavaScript
+
+  section
+    h3#step-2 Bring on the Donuts <span class="image-wrapper" data-width="318" data-height="232" data-s3-src="#{post.slug}/donuts.gif"></span> <a class="paragraph"href="#step-2">&para;</a> 
+    p Food-wise, I much prefer pie to donuts, but when it comes to data viz, donuts are where it's at these days. But how can we make our pie into a donut? I suppose we could create a white circle, make sure its z-index is over 9000, and then position it absolutely over top of the pie. That could work, but it's a terrible idea <span class="image-wrapper" data-width="300" data-height="216" data-s3-src="#{post.slug}/doing-it-wrong.gif"></span>. Instead we're going to make one small change to the code:
+    pre
+      code.javascript.
+        var arc = d3.svg.arc()
+          .outerRadius(radius - 10)
+          .innerRadius(radius - 110); // New
+    p Ta da! Just like that we've transformed our pie chart into a donut chart. The <code>innerRadius</code> value defaults to 0, which results in a pie. In this case we've set it to be 100px less than the <code>outerRadius</code>. That difference of 100px defines the width of the donut.
+    p View it on <a href="">GitHub</a>, <a href="">S3</a> or you can view it here:
+    div#v5.lazy-code(data-s3-src="d3-js-step-by-step-part-1-a-pie-donut-chart/step-6-animation.html", data-language="html")
+      button.expand.small.secondary Display Final Code
+
+  section
+    div.panel This post grew out of a talk I did on D3 at a <a href="">DVTO</a> meetup. The <a href="">original slides</a> may also be of interest.
+
