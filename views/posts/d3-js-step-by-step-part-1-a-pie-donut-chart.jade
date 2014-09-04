@@ -4,6 +4,7 @@ block content
   p D3.js, in case you are unfamiliar with it, is a powerful and flexible JavaScript library that can be used to create interactive data visualizations with HTML, SVG and CSS. D3 stands for Data-Driven Documents <span class="image-wrapper" data-width="430" data-height="538" data-s3-src="#{post.slug}/i-dont-always-d3.jpg"></span> and it is behind some of the most innovative and engaging visualizations currently on the web. On <a href="http://d3js.org/" target="_blank">d3js.org</a> you can find a wide variety of examples in addition to extensive documentation. I think it is one of the most exciting projects in the JavaScript ecosystem.
   p Even experienced JavaScript developers can find D3 daunting at first. There are <em>so</em> many methods available. The key, however, is to keep calm <span class="image-wrapper" data-width="400" data-height="225" data-s3-src="#{post.slug}/panic.gif"></span> and take it one step at a time. Luckily, D3 makes that easy because each method has one single task. It reminds me of <a href="http://www.steamwhistle.ca/" target="_blank">Steam Whistle</a>, a brewing company here in Toronto, whose motto is:
   blockquote Do one thing really, really well. <span class="image-wrapper" data-width="400" data-height="250" data-s3-src="#{post.slug}/steam-whistle.jpg"></span>
+  hr
   h3#v1 Step 1: Our first taste of pie
   p If you were to look at the HTML behind that chart, you would see the following:
   pre
@@ -51,9 +52,9 @@ block content
     code.javascript.
       var color = d3.scale.category10();
   p This line defines a color scale for us. 
-  div#v5-js.lazy-code(data-src="/temp/v1.js", data-language="javascript")
+  div#v5-js.lazy-code(data-s3-src="d3-js-step-by-step-part-1-a-pie-donut-chart/step-1-pie.js", data-language="javascript")
     button.expand.small.secondary Display Final JavaScript
-
+  hr
   h3#v2 Bring on the Donuts <span class="image-wrapper" data-width="318" data-height="232" data-s3-src="#{post.slug}/donuts.gif"></span>
   p Food-wise, I much prefer pie to donuts, but when it comes to data viz, donuts are where it's at these days. But how can we make our pie into a donut? I suppose we could create a white circle, make sure its z-index is over 9000, and then position it absolutely over top of the pie. That could work, but it's a terrible idea <span class="image-wrapper" data-width="300" data-height="216" data-s3-src="#{post.slug}/doing-it-wrong.gif"></span>. Instead we're going to make one small change to the code:
   pre
@@ -63,7 +64,7 @@ block content
         .innerRadius(radius - 110); // New
   p Ta da! Just like that we've transformed our pie chart into a donut chart. The <code>innerRadius</code> value defaults to 0, which results in a pie. In this case we've set it to be 100px less than the <code>outerRadius</code>. That difference of 100px defines the width of the donut.
   p View it on <a href="">GitHub</a>, <a href="">S3</a> or you can view it here:
-  div#v5.lazy-code(data-src="/temp/v5.html", data-language="html")
+  div#v5.lazy-code(data-s3-src="d3-js-step-by-step-part-1-a-pie-donut-chart/step-6-animation.html", data-language="html")
     button.expand.small.secondary Display Final Code
   div.panel This post grew out of a talk I did on D3 at a <a href="">DVTO</a> meetup. The <a href="">original slides</a> may also be of interest.
 block script

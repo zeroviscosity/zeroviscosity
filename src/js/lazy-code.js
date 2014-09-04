@@ -25,7 +25,11 @@
         ldg.classList.add('loading-code');
 
         btn.addEventListener('click', function(evt) {
-            var request = new XMLHttpRequest();
+            var request = new XMLHttpRequest(),
+                pre = document.createElement('pre'),
+                code = document.createElement('code');
+            
+            pre.appendChild(code);
             
             wrp.innerHTML = '';
             wrp.appendChild(ldg);
@@ -33,28 +37,22 @@
             request.open('GET', src, true);
 
             request.onload = function() {
-                var pre, code;
-
                 if (request.status >= 200 && request.status < 400){
-                    pre = document.createElement('pre');
-                    code = document.createElement('code');
-
                     code.classList.add(lang);
-                    code.innerHTML = formatCode(request.responseText);
-                    
-                    pre.appendChild(code);
-                    
-                    wrp.innerHTML = '';
-                    wrp.appendChild(pre);
-                    
-                    hljs.highlightBlock(code);
+                    code.innerHTML = formatCode(request.responseText);    
                 } else {
-                    wrp.innerHTML = 'An error occurred.';
+                    code.innerHTML = 'An error occurred.';
                 }
+                wrp.innerHTML = '';
+                wrp.appendChild(pre);
+                hljs.highlightBlock(code);
             };
 
             request.onerror = function() {
-                wrp.innerHTML = 'An error occurred.';
+                code.innerHTML = 'An error occurred.';
+                wrp.innerHTML = '';
+                wrp.appendChild(pre);
+                hljs.highlightBlock(code);
             };
 
             request.send();
