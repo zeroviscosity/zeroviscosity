@@ -9,6 +9,7 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     paths = {
         js: {
+            hl: ['./public/js/lib/highlight.pack.js'],
             lib: ['./bower_components/fastclick/lib/fastclick.js'], 
             app: ['./src/js/**/*.js']
         },
@@ -27,13 +28,13 @@ gulp.task('lint', function () {
 });
 
 gulp.task('js', function() {
-    gulp.src(paths.js.lib.concat(paths.js.app))
+    gulp.src(paths.js.hl.concat(paths.js.lib.concat(paths.js.app)))
         .pipe(concat('app.js'))
         .pipe(gulp.dest(paths.dest.js));
 });
 
 gulp.task('js:prod', function() {
-    gulp.src(paths.js.lib.concat(paths.js.app))
+    gulp.src(paths.js.hl.concat(paths.js.lib.concat(paths.js.app)))
         .pipe(uglify())
         .pipe(concat('app.js'))
         .pipe(gulp.dest(paths.dest.js));
