@@ -55,7 +55,7 @@ html(lang="en")
               b.appendChild(s);
           };
           var raf = w.requestAnimationFrame || w.mozRequestAnimationFrame ||
-              w.webkitRequestAnimationFrame || w.msRequestAnimationFrame;
+              w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || false;
           if (raf) raf(cb);
           else w.addEventListener('load', cb);
       })(window, document);
