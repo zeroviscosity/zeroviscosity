@@ -1,4 +1,4 @@
-(function(window, document, hljs) {
+(function(window, document, hljs, zv) {
     'use strict';
 
     var wrps = document.querySelectorAll('.lazy-code'),
@@ -22,40 +22,45 @@
 
         src = (src) ? s3 + src : wrp.getAttribute('data-src');
         
-        ldg.classList.add('loading-code');
+        zv.addClass(ldg, 'loading-code');
 
         btn.addEventListener('click', function(evt) {
             var request = new XMLHttpRequest(),
                 pre = document.createElement('pre'),
-                code = document.createElement('code');
+                code = document.createElement('code'),
+                errorHandler = function() {
+                    code.innerHTML = 'An error occurred.';
+                    wrp.innerHTML = '';
+                    wrp.appendChild(pre);
+                    hljs.highlightBlock(code);
+                };
             
             pre.appendChild(code);
             
             wrp.innerHTML = '';
             wrp.appendChild(ldg);
 
-            request.open('GET', src, true);
+            try {
+                request.open('GET', src, true);
 
-            request.onload = function() {
-                if (request.status >= 200 && request.status < 400){
-                    code.classList.add(lang);
-                    code.innerHTML = formatCode(request.responseText);    
-                } else {
-                    code.innerHTML = 'An error occurred.';
-                }
-                wrp.innerHTML = '';
-                wrp.appendChild(pre);
-                hljs.highlightBlock(code);
-            };
+                request.onload = function() {
+                    if (request.status >= 200 && request.status < 400){
+                        zv.addClass(code, lang);
+                        code.innerHTML = formatCode(request.responseText);    
+                    } else {
+                        code.innerHTML = 'An error occurred.';
+                    }
+                    wrp.innerHTML = '';
+                    wrp.appendChild(pre);
+                    hljs.highlightBlock(code);
+                };
 
-            request.onerror = function() {
-                code.innerHTML = 'An error occurred.';
-                wrp.innerHTML = '';
-                wrp.appendChild(pre);
-                hljs.highlightBlock(code);
-            };
+                request.onerror = errorHandler; 
 
-            request.send();
+                request.send();
+            } catch(e) {
+                errorHandler();
+            }
         });
     });
-})(window, window.document, window.hljs);
+})(window, window.document, window.hljs, window.zv);
