@@ -1,10 +1,7 @@
 extends layout
 
 block head
-  meta(property="og:image", content="#{og.image}")
-  meta(property="og:title", content="#{og.title}")
-  meta(property="og:url", content="#{og.url}")
-  meta(property="og:site_name", content="#{og.siteName}")
+  include includes/social-header
 
 block wrapper
   article.zv-post
