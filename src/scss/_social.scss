@@ -6,7 +6,7 @@
     margin: 0 0 rem-calc(16) 0;
     a {
       @include radius(rem-calc(5));
-      @include single-transition();
+      @include single-transition(background-color);
       @include clearfix();
       display: block;
       padding: rem-calc(4);

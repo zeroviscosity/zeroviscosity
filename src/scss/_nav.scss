@@ -27,7 +27,7 @@ nav {
     li {
       float: left;
       a {
-        @include single-transition(all, 0.3s);
+        @include single-transition(background-color);
         color: $background-color;
         display: block;
         height: rem-calc(35);

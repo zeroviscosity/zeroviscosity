@@ -92,7 +92,7 @@ blockquote {
       .zv-tags {
         .zv-tag {
           @include radius(rem-calc(4));
-          @include single-transition(all, 0.3s);
+          @include single-transition(background-color);
           background: $secondary-color;
           color: white;
           font-size: rem-calc(12);
