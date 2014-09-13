@@ -40,6 +40,22 @@
   }
 }
 
+h2 {
+  .image-wrapper {
+    .image-popup {
+      top: rem-calc(40);
+    }
+  }
+}
+
+h3 {
+  .image-wrapper {
+    .image-popup {
+      top: rem-calc(28);
+    }
+  }
+}
+
 @media #{$retina} {
   .image-wrapper {
     .image-icon {

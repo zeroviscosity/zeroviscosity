@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-@import url("//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700");
 @import
   "../../bower_components/foundation/scss/normalize",
   "../../bower_components/foundation/scss/foundation/components/global",
@@ -22,6 +21,12 @@ pre {
 }
 code {
   font-size: rem-calc(14);
+}
+
+iframe {
+  border: none;
+  display: block;
+  overflow: hidden;
 }
 
 section {
@@ -59,6 +64,11 @@ blockquote {
 
 .panel.browsehappy {
   margin: 0;
+}
+
+.centered {
+  display: block;
+  margin: rem-calc(16) auto;
 }
 
 .zv-container {
