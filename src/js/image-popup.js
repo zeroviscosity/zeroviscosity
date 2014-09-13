@@ -29,14 +29,23 @@
                 w = width, 
                 h = height,
                 device = {
-                    w: Math.max(document.documentElement.clientWidth, window.innerWidth || 0) - 2 * buffer,
-                    h: Math.max(document.documentElement.clientHeight, window.innerHeight || 0 - 2 * buffer) 
+                    w: Math.max(document.documentElement.clientWidth, 
+                           window.innerWidth || 0),
+                    h: Math.max(document.documentElement.clientHeight, 
+                        window.innerHeight || 0)
                 },
+                edge = buffer,
                 ratio,
+                half,
                 left, 
-                edge,
                 img;
             
+            if (device.w > 1024) edge = 240 + buffer;
+            else if (device.w > 640) edge = 120 + buffer;
+
+            device.w -= 2 * buffer;
+            device.h -= 2 * buffer;
+
             if (w > device.w) {
                 ratio = device.w / w;
                 w = device.w;
@@ -48,21 +57,16 @@
                 h = device.h;
                 w *= ratio;
             }
-            
-            if (evt.clientX < device.w / 2) {
-                left = 0;
-                edge = evt.clientX + w;
-                if (edge > device.w) {
-                    left -= edge - device.w - buffer;
-                }
-            } else {
-                left = buffer - w;
-                edge = evt.clientX + left;
-                if (edge < buffer / 2) {
-                    left += buffer - edge;
-                }
+
+            half = (w - buffer) / 2;
+            left = -half;
+
+            if (evt.clientX - half < edge) {
+                left += Math.abs(edge - evt.clientX + half);
+            } else if (evt.clientX + half > device.w) {
+                left -= evt.clientX + half - device.w;
             }
-            
+         
             if (zv.hasClass(wrp, 'image-unloaded')) {
                 zv.removeClass(wrp, 'image-unloaded');
                 zv.addClass(wrp, 'image-loading');
