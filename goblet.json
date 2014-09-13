@@ -21,9 +21,9 @@
   ],
   "posts": [ 
     {
-      "title": "D3.js Step by Step: Part 1 - A Pie/Donut Chart",
-      "subtitle": "Getting a foot in the D3 door using the Toronto Parking Ticket Data",
-      "slug": "d3-js-step-by-step-part-1-a-pie-donut-chart",
+      "title": "D3.js Step by Step: Part 1",
+      "subtitle": "Our First Taste of D3: A Pie/Donut Chart",
+      "slug": "d3-js-step-by-step-part-1",
       "created": "2014-09-01T21:32:17.329Z",
       "tags": ["Data Visualizaiton", "D3.js", "JavaScript", "Open Data"],
       "published": false

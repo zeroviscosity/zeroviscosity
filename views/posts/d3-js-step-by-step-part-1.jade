@@ -1,0 +1,160 @@
+extends ../post
+
+block content
+  section.panel
+    h3 TL;DR <span class="image-wrapper" data-width="450" data-height="363" data-s3-src="#{post.slug}/tldr.jpg"></span>
+    p This post introduces some key concepts in D3 by building up an example, step by step, from a bare-bones pie chart to an interactive, animated donut chart that loads external data. If you're wondering why a pie/donut chart was chosen, there's a <a href="#why-a-pie">section below</a> that outlines the reasons for that choice. For the enough-of-this-jibber-jabber-show-me-the-code types out there, here is a breakdown of the aforementioned steps:
+    ul
+      li <a href="#step-1">Step 1</a> A Basic Pie Chart (<a href="https://github.com/zeroviscosity/d3-js-step-by-step-part-1/blob/master/step-1-pie.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step-part-1/step-1-pie.html" target="_blank">Demo</a>)
+      li <a href="#step-2">Step 2</a> A Basic Donut Chart (<a href="https://github.com/zeroviscosity/d3-js-step-by-step-part-1/blob/master/step-2-donut.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step-part-1/step-2-donut.html" target="_blank">Demo</a>)
+      li <a href="#step-3">Step 3</a> Adding a Legend (<a href="https://github.com/zeroviscosity/d3-js-step-by-step-part-1/blob/master/step-3-legend.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step-part-1/step-3-legend.html" target="_blank">Demo</a>)
+      li <a href="#step-4">Step 4</a> Loading External Data (<a href="https://github.com/zeroviscosity/d3-js-step-by-step-part-1/blob/master/step-4-external-data.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step-part-1/step-4-external-data.html" target="_blank">Demo</a>)
+      li <a href="#step-5">Step 5</a> Adding Tooltips (<a href="https://github.com/zeroviscosity/d3-js-step-by-step-part-1/blob/master/step-5-tooltips.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step-part-1/step-5-tooltips.html" target="_blank">Demo</a>)
+      li <a href="#step-6">Step 6</a> Animating Interactivity (<a href="https://github.com/zeroviscosity/d3-js-step-by-step-part-1/blob/master/step-6-animation.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step-part-1/step-6-animation.html" target="_blank">Demo</a>)
+    p <strong>NOTE:</strong> Because we're building things up step by step, the code contains <code>//NEW</code>, <code>//UPDATED</code> and <code>//REMOVED</code> comments to annotate the lines that have been added, altered or deleted relateive to the previous step.
+
+  section
+    h2#intro
+      a(href="#intro") Intro
+    p D3.js, in case you are unfamiliar with it, is a powerful and flexible JavaScript library that can be used to create interactive data visualizations with HTML, SVG and CSS. D3 stands for Data-Driven Documents <span class="image-wrapper" data-width="430" data-height="538" data-s3-src="#{post.slug}/i-dont-always-d3.jpg"></span> and it's behind some of the most innovative and engaging visualizations currently on the web. On <a href="http://d3js.org/" target="_blank">d3js.org</a> you can find a wide variety of examples in addition to extensive documentation. I think it's one of the most exciting projects in the JavaScript ecosystem, and its prolific creator, <a href="http://bost.ocks.org/mike/" target="_blank">Mike Bostock</a>, deserves our collective thanks and admiration.
+    p As great as it is, even experienced JavaScript developers can find D3 daunting at first. It can seem like a lot of code is needed to do anything at all. That, however, is simply a byproduct of how flexible it is. The key is to keep calm <span class="image-wrapper" data-width="400" data-height="225" data-s3-src="#{post.slug}/panic.gif"></span> and take it one step at a time. Luckily, D3 makes that easy because each method has one single task. It reminds me of <a href="http://www.steamwhistle.ca/" target="_blank">Steam Whistle</a>, a brewing company here in Toronto, whose motto is:
+    blockquote Do one thing really, really well. <span class="image-wrapper" data-width="400" data-height="250" data-s3-src="#{post.slug}/steam-whistle.jpg"></span>
+    p We're going to be covering a lot of ground in this post, so we'd better get going and let the fun begin <span class="image-wrapper" data-width="328" data-height="210" data-s3-src="#{post.slug}/bulldog-trampoline.gif"></span>!
+    
+  section
+    h2#step-1 
+      a(href="#step-1") Step 1: A Basic Pie Chart
+      span  <span class="image-wrapper" data-width="500" data-height="330" data-s3-src="#{post.slug}/pie-chart.jpg"></span>
+
+    div.panel
+      h3#why-a-pie Why a Pie?
+      p A few readers will invariably be thinking to themselves, "A pie chart? Really? Pie charts are a <em>terrible</em> way to visualize data. Why would you ever use a pie chart?" Those readers have a valid point. Pie charts are generally not as effective as bar charts because, as humans, <a href="https://en.wikipedia.org/wiki/Pie_chart#Use.2C_effectiveness_and_visual_perception" target="_blank">comparison by angle is harder than comparison by length</a>. However, this post is concerned with the demonstration of fundamental concepts in D3 as opposed to the promotion of one type of visualization over another. For our purposes, the pie/donut chart provides certain advantages; for instance, we won't need to any CSS for the initial steps. Later posts in this series will look at other plot types, such as the venerable bar plot.
+    p To get the ball rolling, we're going to start with a basic pie chart:
+    img.centered(src="/img/posts/d3-js-step-by-step-part-1/step-1-pie.png", height="360", width="360")
+    p If you were to look at the HTML behind that chart, you would see the following:
+    pre
+      code.html
+        :code
+          <svg width="360" height="360">
+            <g transform="translate(180,180)">
+              <path d="M0,-180A180,180 0 0,1 105.80134541264516,-145.62305898749054L0,0Z" fill="#393b79"></path>
+              <path d="M105.80134541264516,-145.62305898749054A180,180 0 0,1 171.19017293312763,55.62305898749053L0,0Z" fill="#5254a3"></path>
+              <path d="M171.19017293312763,55.62305898749053A180,180 0 0,1 -105.80134541264515,145.62305898749054L0,0Z" fill="#6b6ecf"></path>
+              <path d="M-105.80134541264515,145.62305898749054A180,180 0 0,1 -3.306546353087443e-14,-180L0,0Z" fill="#9c9ede"></path>
+            </g>
+          </svg>
+    p For now let's just ignore the stuff in the <code>d</code> attribute:
+    pre
+      code.html
+        :code
+          <svg width="360" height="360">
+            <g transform="translate(180,180)">
+              <path d="M0,-180A..." fill="#393b79"></path>
+              <path d="M105.801..." fill="#5254a3"></path>
+              <path d="M171.190..." fill="#6b6ecf"></path>
+              <path d="M-105.80..." fill="#9c9ede"></path>
+            </g>
+          </svg>
+    p That doesn't look too bad. It's actually pretty easy to see how that corresponds to the pie chart above:
+    ul
+      li There's a <code>svg</code> wrapper that defines the width and height.
+      li There's a <code>g</code> element that centers the chart (note that 180 is half of 360).
+      li There are four <code>path</code> elements that correspond to the four segments in the pie chart, each of which defines a <code>fill</code> colour and a <code>d</code> attribute that specifies the shape and position.
+    p If the <code>d</code> attribute wasn't so complicated you could code the whole thing by hand. Luckily D3 is there to do the heavy lifting for you, so let's look at how we can build this up.
+    p We'll start by defining some data. Later on we'll load in a more realistic dataset but for now let's just create a simple array with four objects, each of which has a <code>label</code> and a <code>count</code>::
+    pre
+      code.javascript.
+        var data = [
+          { label: 'Abulia', count: 10 }, 
+          { label: 'Burlap', count: 20 },
+          { label: 'Cucumber', count: 30 },
+          { label: 'Dijkstra', count: 40 }
+        ];
+    p These four elements correspond to the four segments in our chart and to the four <code>path</code> elements in the SVG code above. We could have a simple array of numbers, but this corresponds more with the dataset we'll be using later and, more importantly, with the datasets you're apt to meet in the wild. 
+    p Next we'll define some dimensions for our chart:
+    pre
+      code.javascript.
+        var width = 360;
+        var height = 360;
+        var radius = Math.min(width, height) / 2;     
+    p The width and height are self-explanatory. Since pie charts are round, we need a radius, which we set to half of the smaller of the two dimensions. In this case the width and height are the same, but this way we could change one of those without having to also update the radius. Now it's time to put D3 to work for us:
+    pre
+      code.javascript.
+        var color = d3.scale.category20b();
+    p This line defines a color scale for us. D3 provides a few different color scales. In this case I've picked one with twenty colours, hence the <em>20</em> in the method name. Try changing this to <code>d3.scale.category10()</code> or <code>d3.scale.category20()</code> to see other options. Alternatively you can define your own colours. If you have more than twenty values in your dataset, D3 will start over at the beginning once it runs out of colours. We only have four data points at the moment, and will only have seven later on, so twenty is overkill for us.
+    p To draw a pie chart, you need two things:
+    ol
+      li the radius, which determines the size of the overall chart;
+      li the start and end angles of each segment.
+    p To define the radius we use D3's <code>svg.arc()</code> and provide its <code>outerRadius()</code> method with the radius we defined earlier:
+    pre
+      code.javascript.
+        var arc = d3.svg.arc()
+          .outerRadius(radius);
+    p For the start and end angles of the segments, we use D3's <code>layout.pie()</code>. For it we need to define how to extract the numerical data from each element in our dataset:
+    pre
+      code.javascript.
+        var pie = d3.layout.pie()
+          .value(function(d) { return d.count; });
+    p This is where the <code>count</code> property of the array of objects that we defined earlier comes into play. If we had just had an array of numbers, then instead of returning <code>d.count</code> we could just have returned <code>d</code>.
+    p Now that we have functions for the radius and the angles, we can 
+    div.lazy-code(data-src="/static/d3-js-step-by-step-part-1/step-1-pie.html", data-language="html")
+      button.expand.small.secondary Display Full Code for Step 1
+
+  section
+    h2#step-2
+      a(href="#step-2") Step 2: A Basic Donut Chart
+      span  <span class="image-wrapper" data-width="318" data-height="232" data-s3-src="#{post.slug}/donuts.gif"></span>
+    p Food-wise, I much prefer pie to donuts, but when it comes to data viz, donut charts have certain advantages. Primarily because the interior can be put to use, which we'll be doing shortly.
+    img.centered(src="/img/posts/d3-js-step-by-step-part-1/step-2-donut.png", height="360", width="360")
+    p But how can we make our pie into a donut? I suppose we could create a white circle, make sure its z-index is over 9000, and then position it absolutely over top of the pie. That could work, but it's a terrible idea <span class="image-wrapper" data-width="300" data-height="216" data-s3-src="#{post.slug}/doing-it-wrong.gif"></span>. Instead we're going to make one small change to the code:
+    pre
+      code.javascript.
+        var arc = d3.svg.arc()
+          .outerRadius(radius)                // UPDATED (removed semicolon)
+          .innerRadius(radius - donutWidth);  // NEW
+    p Ta da! Just like that we've transformed our pie chart into a donut chart. The <code>innerRadius</code> value defaults to 0, which results in a pie. In this case we've set it to be 100px less than the <code>outerRadius</code>. That difference of 100px defines the width of the donut.
+    p Honestly that was so easy that I'm surprised it qualified as a step. Who thought that was legit, anyways? At any rate, let's get to something with more meat to it.
+    div.lazy-code(data-src="/static/d3-js-step-by-step-part-1/step-2-donut.html", data-language="html")
+      button.expand.small.secondary Display Full Code for Step 2
+ 
+  section
+    h2#step-3
+      a(href="#step-3") Step 3: Adding a Legend
+      span  <span class="image-wrapper" data-width="440" data-height="305" data-s3-src="#{post.slug}/legend.jpg"></span>
+    p So we have a swanky donut chart, but how are we supposed to know which colour corresponds to which segment? Enter the legend:
+    img.centered(src="/img/posts/d3-js-step-by-step-part-1/step-3-legend.png", height="360", width="360")
+    div.lazy-code(data-src="/static/d3-js-step-by-step-part-1/step-3-legend.html", data-language="html")
+      button.expand.small.secondary Display Full Code for Step 3
+ 
+  section
+    h2#step-4
+      a(href="step-4") Step 4: Loading External Data
+      span  <span class="image-wrapper" data-width="392" data-height="235" data-s3-src="#{post.slug}/bad-parking.gif"></span>
+    p Up until now our dataset has been rather contrived. 
+    img.centered(src="/img/posts/d3-js-step-by-step-part-1/step-4-external-data.png", height="360", width="360")
+    div.lazy-code(data-src="/static/d3-js-step-by-step-part-1/step-4-external-data.html", data-language="html")
+      button.expand.small.secondary Display Full Code for Step 4
+
+  section
+    h2#step-5
+      a(href="#step-5") Step 5: Adding Tooltips
+      span  <span class="image-wrapper" data-width="450" data-height="300" data-s3-src="#{post.slug}/power-hammer.jpg"></span>
+    p Wouldn't it be bonny if we could tell which section corresponded to which province/state just by hovering over it? Yes. Yes, it would. So let's do that. 
+    iframe.centered(src="/static/d3-js-step-by-step-part-1/step-5-tooltips.html", height="380", width="380", seamless)
+    div.lazy-code(data-src="/static/d3-js-step-by-step-part-1/step-5-tooltips.html", data-language="html")
+      button.expand.small.secondary Display Full Code for Step 5
+
+  section
+    h2#step-6
+      a(href="#step-6") Step 6: Animating Interactivity
+      span  <span class="image-wrapper" data-width="480" data-height="226" data-s3-src="#{post.slug}/at-last-morpheus.gif"></span>
+    p Here are are at Step 6.
+    iframe.centered(src="/static/d3-js-step-by-step-part-1/step-6-animation.html", height="400", width="380", seamless)
+    p View it on <a href="">GitHub</a>, <a href="">S3</a> or you can view it here:
+    div.lazy-code(data-src="/static/d3-js-step-by-step-part-1/step-6-animation.html", data-language="html")
+      button.expand.small.secondary Display Full Code for Step 6
+
+  section
+    div.panel This post grew out of a talk I did on D3 at a <a href="https://twitter.com/DVToronto" target="_blank">DVToronto</a> meetup. The <a href="http://slides.com/kentenglish/getting-started-with-d3-js-using-the-toronto-parking-ticket-data" target="_blank">original slides</a> may also be of interest, although the code has undergone some major changes.
+
