@@ -12,7 +12,7 @@ block wrapper
       for post in posts
         div.zv-list-entry
           h2
-            a(href="/post/#{post.slug}")=post.title
+            a(href="/posts/#{post.slug}")=post.title
           h4=post.subtitle
           div.zv-meta
             div.zv-date=post.date
