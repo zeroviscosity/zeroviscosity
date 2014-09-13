@@ -42,24 +42,27 @@ html(lang="en")
     script.
       (function(w, d) {
           var cb = function() {
-              var l = d.createElement('link'),
-                  s = d.createElement('script'),
+              var css = d.createElement('link'),
+                  st = d.createElement('style'),
+                  js = d.createElement('script'),
                   h = d.getElementsByTagName('head')[0], 
                   b = d.getElementsByTagName('body')[0]; 
               
-              l.rel = 'stylesheet';
-              l.href = '/css/main.css';
-              h.appendChild(l);
+              css.rel = 'stylesheet';
+              css.href = '/css/main.css';
+              h.appendChild(css);
 
-              s.src = '/js/app.js';
-              b.appendChild(s);
+              st.innerHTML = '@import url("//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700");';
+              h.appendChild(st);
+
+              js.src = '/js/app.js';
+              b.appendChild(js);
           };
           var raf = w.requestAnimationFrame || w.mozRequestAnimationFrame ||
               w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || false;
           if (raf) raf(cb);
           else w.addEventListener('load', cb);
       })(window, document);
-    block script
     script.
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
