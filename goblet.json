@@ -19,14 +19,76 @@
       "published": true
     }  
   ],
-  "posts": [ 
+  "categories": [
     {
-      "title": "D3.js Step by Step: Part 1",
-      "subtitle": "Our First Taste of D3: A Pie/Donut Chart",
-      "slug": "d3-js-step-by-step-part-1",
-      "created": "2014-09-01T21:32:17.329Z",
+      "title": "D3.js Step by Step",
+      "slug": "d3-js-step-by-step"
+    }
+  ],
+  "posts": [    
+    {
+      "category": 0,
+      "title": "Intro",
+      "subtitle": "Some background on D3.js and an overview of this series",
+      "slug": "step-0-intro",
+      "created": "2014-09-14T17:55:53.867Z",
       "tags": ["Data Visualizaiton", "D3.js", "JavaScript", "Open Data"],
-      "published": false
+      "published": true
+    },
+
+    {
+      "category": 0,
+      "title": "A Basic Pie Chart",
+      "subtitle": "Setting up a bare-bones pie chart",
+      "slug": "step-1-a-basic-pie-chart",
+      "created": "2014-09-14T17:55:53.867Z",
+      "tags": ["Data Visualizaiton", "D3.js", "JavaScript", "Open Data"],
+      "published": true
+    },
+    {
+      "category": 0,
+      "title": "A Basic Donut Chart",
+      "subtitle": "Turning a pie chart into a donut chart",
+      "slug": "step-2-a-basic-donut-chart",
+      "created": "2014-09-14T17:55:53.867Z",
+      "tags": ["Data Visualizaiton", "D3.js", "JavaScript", "Open Data"],
+      "published": true
+    },
+    {
+      "category": 0,
+      "title": "Adding a Legend",
+      "subtitle": "Providing context while making use of white space",
+      "slug": "step-3-adding-a-legend",
+      "created": "2014-09-14T17:55:53.867Z",
+      "tags": ["Data Visualizaiton", "D3.js", "JavaScript", "Open Data"],
+      "published": true
+    },
+    {
+      "category": 0,
+      "title": "Loading External Data",
+      "subtitle": "Reading in data from an external CSV file",
+      "slug": "step-4-loading-external-data",
+      "created": "2014-09-14T17:55:53.867Z",
+      "tags": ["Data Visualizaiton", "D3.js", "JavaScript", "Open Data"],
+      "published": true
+    },
+    {
+      "category": 0,
+      "title": "Adding Tooltips",
+      "subtitle": "Harnessing mouse events to layer on additional information",
+      "slug": "step-5-adding-tooltips",
+      "created": "2014-09-14T17:55:53.867Z",
+      "tags": ["Data Visualizaiton", "D3.js", "JavaScript", "Open Data"],
+      "published": true
+    },
+    {
+      "category": 0,
+      "title": "Animating Interactivity",
+      "subtitle": "Adding the ability to filter the dataset and animate the transition",
+      "slug": "step-6-animating-interactivity",
+      "created": "2014-09-14T17:55:53.867Z",
+      "tags": ["Data Visualizaiton", "D3.js", "JavaScript", "Open Data"],
+      "published": true
     }
   ]
 }

@@ -1,0 +1,131 @@
+extends ../../post
+
+block content
+  section.panel
+    h3 TL;DR
+    p This post is part of a series that explores some key concepts in D3.js by building up an example, step by step, from a bare-bones pie chart to an interactive, animated donut chart that loads external data. For the enough-with-the-jibber-jabber-show-me-the-code types out there, here's a breakdown of the steps we'll be covering:
+    ul
+      li <a href="/d3-js-step-by-step/step-0-intro">Step 0: Intro</a>
+      li.bold <a href="/d3-js-step-by-step/step-1-a-basic-pie-chart">Step 1: A Basic Pie Chart</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-1-a-basic-pie-chart.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step/step-1-a-basic-pie-chart.html" target="_blank">Demo</a>) &larr; You Are Here
+      li <a href="/d3-js-step-by-step/step-2-a-basic-donut-chart">Step 2: A Basic Donut Chart</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-2-a-basic-donut-chart.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step/step-2-a-basic-donut-chart.html" target="_blank">Demo</a>)
+      li <a href="/d3-js-step-by-step/step-3-adding-a-legend">Step 3: Adding a Legend</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-3-adding-a-legend.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step/step-3-adding-a-legend.html" target="_blank">Demo</a>)
+      li <a href="/d3-js-step-by-step/step-4-loading-external-data">Step 4: Loading External Data</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-4-loading-external-data.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step/step-4-loading-external-data.html" target="_blank">Demo</a>)
+      li <a href="/d3-js-step-by-step/step-5-adding-tooltips">Step 5: Adding Tooltips</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-5-adding-tooltips.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step/step-5-adding-tooltips.html" target="_blank">Demo</a>)
+      li <a href="/d3-js-step-by-step/step-6-animating-interactivity">Step 6: Animating Interactivity</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-6-animating-interactivity.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step/step-6-animating-interactivity.html" target="_blank">Demo</a>)
+    p <strong>NOTE:</strong> Because we're building things up step by step, the source code contains <code>NEW</code>, <code>UPDATED</code> and <code>REMOVED</code> comments to annotate the lines that have been added, altered or deleted relateive to the previous step.
+   
+  section
+    div.panel
+      h3#why-a-pie Why a Pie? <span class="image-wrapper" data-width="500" data-height="330" data-s3-src="#{category.slug}/#{post.slug}/pie-chart.jpg"></span>
+      p A few readers will invariably be thinking to themselves, "A pie chart? Really? Pie charts are a <em>terrible</em> way to visualize data. Why would you ever use a pie chart?" Those readers have a valid point. Pie charts are generally not as effective as bar charts because, as humans, <a href="https://en.wikipedia.org/wiki/Pie_chart#Use.2C_effectiveness_and_visual_perception" target="_blank">comparison by angle is harder than comparison by length</a>. However, this post is concerned with the demonstration of fundamental concepts in D3 as opposed to the promotion of one type of visualization over another. For our purposes, the pie/donut chart provides certain advantages; for instance, we won't need to any CSS for the initial steps. It also provides a natural excuse to introduce colour scales. I plan to look at other plot types, such as the venerable bar plot, in another series of posts.
+    p To get the ball rolling, we're going to start with a basic pie chart:
+    iframe.centered(src="/static/d3-js-step-by-step/step-1-a-basic-pie-chart.html", height="380", width="380", border="0", seamless)
+    p If you were to inspect the markup generating that chart, you would see the following (ignoring the stuff in the <code>d</code> attribute for now):
+    pre#markup-pie
+      code.html
+        :code
+          <div id="chart">
+            <svg width="360" height="360">
+              <g transform="translate(180,180)">
+                <path d="M0,-180A..." fill="#393b79"></path>
+                <path d="M105.801..." fill="#5254a3"></path>
+                <path d="M171.190..." fill="#6b6ecf"></path>
+                <path d="M-105.80..." fill="#9c9ede"></path>
+              </g>
+            </svg>
+          </div>
+    p That doesn't look too bad. It's actually pretty easy to see how that corresponds to the pie chart above:
+    ul
+      li There's a <code>div</code> with the id <em>chart</em>.
+      li There's a <code>svg</code> wrapper that defines the width and height.
+      li There's a <code>g</code> element that centers the chart (note that 180 is half of 360).
+      li There are four <code>path</code> elements that correspond to the four segments in the pie chart, each of which defines a <code>fill</code> colour and a <code>d</code> attribute that specifies the shape and position.
+    p If the <code>d</code> attribute wasn't so complicated you could code the whole thing by hand. Luckily D3 is there to do the heavy lifting for you, so let's look at how we can build this up.
+    p We'll start by defining some data. Later on we'll load in a more realistic dataset but for now let's just create a simple array with four objects, each of which has a <code>label</code> and a <code>count</code>:
+    pre
+      code.javascript.
+        var dataset = [
+          { label: 'Abulia', count: 10 }, 
+          { label: 'Betelgeuse', count: 20 },
+          { label: 'Cantaloupe', count: 30 },
+          { label: 'Dijkstra', count: 40 }
+        ];
+    p These four entries correspond to the four segments in our chart and to the four <code>path</code> elements in the SVG code above. We could have used a simple array of numbers for this step, but this mimics the structure of the dataset we'll be using later on and, more importantly, with the datasets you're apt to meet in the wild. 
+    p Next we'll define some dimensions for our chart:
+    pre
+      code.javascript.
+        var width = 360;
+        var height = 360;
+        var radius = Math.min(width, height) / 2;     
+    p The width and height are self-explanatory. Since pie charts are round, we need a radius, which we set to half of the smaller of the two dimensions. In this case the width and height are the same, but this way we could change one of those without having to also update the radius. Now it's time to put D3 to work for us:
+    pre
+      code.javascript.
+        var color = d3.scale.category20b();
+    p This line defines a colour scale for us. D3 provides a few different <a href="https://github.com/mbostock/d3/wiki/Ordinal-Scales#categorical-colors" target="_blank">colour scales</a>. If we had more than twenty entries in our dataset, D3 would start to reuse colours. Alternatively we could have used the built-in support for <a href="https://github.com/mbostock/d3/wiki/Ordinal-Scales#colorbrewer" target="_blank">ColorBrewer</a> or defined our own palette by providing an array of colours:
+    pre
+      code.javascript.
+        // Alternative
+        var color = d3.scale.ordinal()
+          .range(['#A60F2B', '#648C85', '#B3F2C9', '#528C18', '#C3F25C']); 
+    p Next we'll create the <code>svg</code> and <code>g</code> elements that we saw in the <a href="#markup-pie">markup</a> earlier:
+    pre
+      code.javascript.
+        var svg = d3.select('#chart')
+          .append('svg')
+          .attr('width', width)
+          .attr('height', height)
+          .append('g')
+          .attr('transform', 'translate(' + (width / 2) +  ',' + (height / 2) + ')');
+    p This might look like a lot of steps, but the key thing&mdash;indeed, the main thesis of these posts&mdash;is that:
+    blockquote In D3, each method is specific: it does one thing and it does that one thing very well. This allows it to be highly composable, which is the origin of its flexibility, and that, in turn, is the source of its power.
+    p Let's look at that code line by line:
+    ol
+      li First we use D3's <code>select</code> method to retrieve the DOM element with id <em>chart</em>. If you've used jQuery or something similar this should seem familiar.
+      li Next we append an <code>svg</code> element to the element we've selected.
+      li Because we're chaining these calls, we now have a reference to the new <code>svg</code> element, so we set its width to be the width we defined earlier on.
+      li After the width we set the height.
+      li Now we append a <code>g</code> element to the <code>svg</code> element.
+      li Finally, becuase our reference is now to the <code>g</code> element, we center it in the containing <code>svg</code> element.
+    p All of those steps correspond exactly to the <a href="#markup-pie">markup</a> we examined above. It's exactly the order in which you'd do it if you were doing it by hand. There's no mystery here <span class="image-wrapper" data-width="500" data-height="279" data-s3-src="#{category.slug}/#{post.slug}/breaking-bad-magic.gif"></span>.
+    p With those details out of the way, we can get onto the pie chart itself, for which we need ways of defining two things:
+    ol
+      li the radius, which determines the size of the overall chart;
+      li the start and end angles of each segment.
+    p To define the radius we use D3's <code>svg.arc()</code> and provide its <code>outerRadius()</code> method with the radius we defined earlier:
+    pre
+      code.javascript.
+        var arc = d3.svg.arc()
+          .outerRadius(radius);
+    p For the start and end angles of the segments, we use D3's <code>layout.pie()</code>: 
+    pre
+      code.javascript.
+        var pie = d3.layout.pie()
+          .value(function(d) { return d.count; })
+          .sort(null);
+    p For it we need to define how to extract the numerical data from each entry in our dataset; this is where the <code>count</code> property of the objects we defined earlier comes into play. If we had just had an array of numbers, then instead of returning <code>d.count</code> we could just have returned <code>d</code>. We specify <code>sort(null)</code> to disable <a href="https://github.com/mbostock/d3/wiki/Pie-Layout#sort" target="_blank">sorting</a> of the entries, because a) we have them in the order we want and b) later on sorting will mess with our animation. By default it will sort in order of descending value.
+    p Now that we have functions for the radius and the angles, we can take the final step of creating our chart: 
+    pre
+      code.javascript.
+        var path = svg.selectAll('path')
+          .data(pie(dataset))
+          .enter()
+          .append('path')
+          .attr('d', arc)
+          .attr('fill', function(d, i) { 
+            return color(d.data.label);
+          });
+    p I'll grant that this isn't quite as obvious as the earlier steps&mdash;there's a little magic <span class="image-wrapper" data-width="275" data-height="252" data-s3-src="#{category.slug}/#{post.slug}/magic.gif"></span> going on here&mdash;but again let's take it line by line:
+    ol
+      li First we select all <code>path</code> elements inside our <code>svg</code> (or more specifically, inside the <code>g</code> element). At present these don't exist but we're going to create them in a moment.
+      li The <code>data()</code> <a href="https://github.com/mbostock/d3/wiki/Selections#data" target="_blank">method</a> is how we associate our dataset with the <code>path</code> elements we're about to create. We do so by passing it through our <code>pie</code> function, which knows how to extract the values and give them meaning in the context of a pie chart.
+      li The <code>enter()</code> <a href="https://github.com/mbostock/d3/wiki/Selections#enter" target="_blank">method</a> creates placeholder nodes for each of the values in our dataset.
+      li Next we use <code>append()</code> to replace our placeholders with <code>path</code> elements.
+      li We define the <code>d</code> attribute&mdash;the complicated one in the <a href="#markup-pie">markup</a>&mdash;using our <code>arc</code> function.
+      li Finally we make use of our colour scale to define the <code>fill</code> for each <code>path</code> by associating a colour with each label in the dataset.
+    p This is probably the hardest part of the entire post, but there is a silver lining: 
+    blockquote In D3 examples you'll see the <code>.selectAll(el).data(data).enter().append(el)</code> pattern again and again. It's a fundamental set of steps that occurs in many of the most common chart types.
+    p In other words, this is not specific to this example; it's representative of something you'll see often when you start digging into D3 code. For me it's a kind of lodestone that helps orient me in a new piece of code.
+    p Our basic pie chart is now complete. We can now move on to the <a href="/d3-js-step-by-step/step-2-a-basic-donut-chart">next step</a> or pause to consider the code in its entirety along with its accompanying HTML:
+    div.lazy-code(data-src="/static/d3-js-step-by-step/step-1-a-basic-pie-chart.html", data-language="html")
+      button.expand.small.secondary Display Full Code for Step 1
+
