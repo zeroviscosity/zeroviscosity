@@ -12,7 +12,7 @@ block content
       li <a href="/d3-js-step-by-step/step-4-loading-external-data">Step 4: Loading External Data</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-4-loading-external-data.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step/step-4-loading-external-data.html" target="_blank">Demo</a>)
       li.bold <a href="/d3-js-step-by-step/step-5-adding-tooltips">Step 5: Adding Tooltips</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-5-adding-tooltips.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step/step-5-adding-tooltips.html" target="_blank">Demo</a>) &larr; You Are Here
       li <a href="/d3-js-step-by-step/step-6-animating-interactivity">Step 6: Animating Interactivity</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-6-animating-interactivity.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step/step-6-animating-interactivity.html" target="_blank">Demo</a>)
-    p <strong>NOTE:</strong> Because we're building things up step by step, the source code contains <code>NEW</code>, <code>UPDATED</code> and <code>REMOVED</code> comments to annotate the lines that have been added, altered or deleted relateive to the previous step.
+    p <strong>NOTE:</strong> Because we're building things up step by step, the source code contains <code>NEW</code>, <code>UPDATED</code> and <code>REMOVED</code> comments to annotate the lines that have been added, altered or deleted relative to the previous step.
 
   section
     p One thing you may have noticed about this new dataset is that the segments are all similarly sized <span class="image-wrapper" data-width="500" data-height="360" data-s3-src="#{category.slug}/#{post.slug}/optical-illusion-cats.jpg"></span>. One thing we could do to help clarify the relative sizes&mdash;apart from switching to a bar chart&mdash;is provide tooltips with additional information. You can see it in action here:
@@ -69,7 +69,7 @@ block content
           // More code
           // ...
         });
-    p Becuase this bit of code doesn't depend on the data, we can put it outside the callback. We start by adding a <code>div</code> with class <em>tooltip</em> to the container, and then add three <code>div</code> elements to it, one after the other, with classes <em>label</em>, <em>count</em> and <em>percent</em>, respectively. Note that I used a class for <em>tooltip</em> instead of an id in case I wanted more than one chart on the page and needed to reuse the tooltip styles.
+    p Because this bit of code doesn't depend on the data, we can put it outside the callback. We start by adding a <code>div</code> with class <em>tooltip</em> to the container, and then add three <code>div</code> elements to it, one after the other, with classes <em>label</em>, <em>count</em> and <em>percent</em>, respectively. Note that I used a class for <em>tooltip</em> instead of an id in case I wanted more than one chart on the page and needed to reuse the tooltip styles.
     p Now it's time for the mouse event handlers. These will be attached to <code>path</code> so they need to come after its definition inside the callback:
     pre
       code.javascript.

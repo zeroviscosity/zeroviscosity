@@ -12,7 +12,7 @@ block content
       li <a href="/d3-js-step-by-step/step-4-loading-external-data">Step 4: Loading External Data</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-4-loading-external-data.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step/step-4-loading-external-data.html" target="_blank">Demo</a>)
       li <a href="/d3-js-step-by-step/step-5-adding-tooltips">Step 5: Adding Tooltips</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-5-adding-tooltips.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step/step-5-adding-tooltips.html" target="_blank">Demo</a>)
       li <a href="/d3-js-step-by-step/step-6-animating-interactivity">Step 6: Animating Interactivity</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-6-animating-interactivity.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step/step-6-animating-interactivity.html" target="_blank">Demo</a>)
-    p <strong>NOTE:</strong> Because we're building things up step by step, the source code contains <code>NEW</code>, <code>UPDATED</code> and <code>REMOVED</code> comments to annotate the lines that have been added, altered or deleted relateive to the previous step.
+    p <strong>NOTE:</strong> Because we're building things up step by step, the source code contains <code>NEW</code>, <code>UPDATED</code> and <code>REMOVED</code> comments to annotate the lines that have been added, altered or deleted relative to the previous step.
 
   section
     p So we have a swanky donut chart, but how are we supposed to know what each segment represents? It's time to add a legend <span class="image-wrapper" data-width="440" data-height="305" data-s3-src="#{category.slug}/#{post.slug}/legend.jpg"></span>, and we may as well make use of the white space we created when we switched to a donut:
@@ -50,7 +50,7 @@ block content
               stroke-width: 2;
             }
           </style>:
-    p This isn't even strictly necessary but it will help make our legend a little prettier. If you've ever done any CSS before, the first declaration should be familiar. The second might look a little weird, although you will recognize <code>rect</code> from the <a href="#markup-legend">markup</a> above. Settings <stroke-width</code> to 2 means that it will have a 2px-wide border.
+    p This isn't even strictly necessary but it will help make our legend a little prettier. If you've ever done any CSS before, the first declaration should be familiar. The second might look a little weird, although you will recognize <code>rect</code> from the <a href="#markup-legend">markup</a> above. Setting <code>stroke-width</code> to 2 means that it will have a 2px-wide border, which will come in handy in <a href="/d3-js-step-by-step/step-6-animating-interactivity">Step 6</a>.
     p Next we're going to define a couple of size variables so we don't have to hard code any numbers:
     pre
       code.javascript.
@@ -111,7 +111,7 @@ block content
           .attr('x', legendRectSize + legendSpacing)
           .attr('y', legendRectSize - legendSpacing)
           .text(function(d) { return d.toUpperCase(); });
-    p So that brings us to the end of our legend. There was a fair bit to it given that we wanted to center it inside the donut. It's worth reiterating that we saw the <code>.selectAll(el).data(data).enter().append(el)</code> pattern come up again. We won't run into it again in this post but I guarantee you'll see it if you start looking at other D3 examples. Now it's time to move on to <a href="/d3-js-step-by-step/step-4-loading-external-data">Step 4</a>, but first, here's the updated code in case you're interested:
+    p So that brings us to the end of our legend. There was a fair bit to it given that we wanted to center it inside the donut. It's worth reiterating that we saw the <code>.selectAll(el).data(data).enter().append(el)</code> pattern come up again. We won't run into it again in this series but I guarantee you'll see it if you start looking at other D3 examples. Now it's time to move on to <a href="/d3-js-step-by-step/step-4-loading-external-data">Step 4</a>, but first, here's the updated code in case you're interested:
     div.lazy-code(data-src="/static/d3-js-step-by-step/step-3-adding-a-legend.html", data-language="html")
       button.expand.small.secondary Display Full Code for Step 3
 

@@ -12,7 +12,7 @@ block content
       li <a href="/d3-js-step-by-step/step-4-loading-external-data">Step 4: Loading External Data</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-4-loading-external-data.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step/step-4-loading-external-data.html" target="_blank">Demo</a>)
       li <a href="/d3-js-step-by-step/step-5-adding-tooltips">Step 5: Adding Tooltips</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-5-adding-tooltips.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step/step-5-adding-tooltips.html" target="_blank">Demo</a>)
       li <a href="/d3-js-step-by-step/step-6-animating-interactivity">Step 6: Animating Interactivity</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-6-animating-interactivity.html" target="_blank">Code</a> | <a href="/static/d3-js-step-by-step/step-6-animating-interactivity.html" target="_blank">Demo</a>)
-    p <strong>NOTE:</strong> Because we're building things up step by step, the source code contains <code>NEW</code>, <code>UPDATED</code> and <code>REMOVED</code> comments to annotate the lines that have been added, altered or deleted relateive to the previous step.
+    p <strong>NOTE:</strong> Because we're building things up step by step, the source code contains <code>NEW</code>, <code>UPDATED</code> and <code>REMOVED</code> comments to annotate the lines that have been added, altered or deleted relative to the previous step.
    
   section
     div.panel
@@ -85,12 +85,12 @@ block content
       li Because we're chaining these calls, we now have a reference to the new <code>svg</code> element, so we set its width to be the width we defined earlier on.
       li After the width we set the height.
       li Now we append a <code>g</code> element to the <code>svg</code> element.
-      li Finally, becuase our reference is now to the <code>g</code> element, we center it in the containing <code>svg</code> element.
+      li Finally, because our reference is now to the <code>g</code> element, we center it in the containing <code>svg</code> element.
     p All of those steps correspond exactly to the <a href="#markup-pie">markup</a> we examined above. It's exactly the order in which you'd do it if you were doing it by hand. There's no mystery here <span class="image-wrapper" data-width="500" data-height="279" data-s3-src="#{category.slug}/#{post.slug}/breaking-bad-magic.gif"></span>.
     p With those details out of the way, we can get onto the pie chart itself, for which we need ways of defining two things:
     ol
-      li the radius, which determines the size of the overall chart;
-      li the start and end angles of each segment.
+      li the radius, which determines the size of the overall chart
+      li the start and end angles of each segment
     p To define the radius we use D3's <code>svg.arc()</code> and provide its <code>outerRadius()</code> method with the radius we defined earlier:
     pre
       code.javascript.
