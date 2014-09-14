@@ -6,7 +6,7 @@ block head
 block wrapper
   article.zv-post
     header
-      h1=post.title
+      h1 #{category.title}: #{post.title}
       h3=post.subtitle
       div.zv-meta
         div.zv-date=post.date

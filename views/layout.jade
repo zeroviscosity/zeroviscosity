@@ -8,9 +8,9 @@ html(lang="en")
     title=title
     link(rel="canonical", href="#{url}")
     link(rel="shortcut icon", type="image/x-icon", href="/favicon.ico")
+    link(rel="stylesheet", href="/css/main.css")
     style.
-      html { background: #efefef; }
-      body { opacity: 0; }
+      @import url("//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700");
   body 
     nav.clearfix
       div.zv-logo-top
@@ -21,6 +21,12 @@ html(lang="en")
           a(href="/")
             span.icon.icon-home
             span.text Home
+        if categories && categories.length
+          for category in categories
+            li
+              a(href="/category/#{category.slug}")
+                span.icon(class="icon-#{category.slug}")
+                span.text=category.title
         if pages && pages.length
           for page in pages
             li
@@ -42,18 +48,8 @@ html(lang="en")
     script.
       (function(w, d) {
           var cb = function() {
-              var css = d.createElement('link'),
-                  st = d.createElement('style'),
-                  js = d.createElement('script'),
-                  h = d.getElementsByTagName('head')[0], 
+              var js = d.createElement('script'),
                   b = d.getElementsByTagName('body')[0]; 
-              
-              css.rel = 'stylesheet';
-              css.href = '/css/main.css';
-              h.appendChild(css);
-
-              st.innerHTML = '@import url("//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700");';
-              h.appendChild(st);
 
               js.src = '/js/app.js';
               b.appendChild(js);
