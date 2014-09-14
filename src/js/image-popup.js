@@ -5,6 +5,23 @@
         loading = document.querySelector('#loading'),
         s3 = 'https://s3.amazonaws.com/zeroviscosity/';
 
+    function loadImage(wrp, popup, src, width, height) {
+        var img = new window.Image(width, height);
+        
+        zv.removeClass(wrp, 'image-unloaded');
+        zv.addClass(wrp, 'image-loading');
+        
+        img.style.opacity = 0;
+        img.onload = function() {
+            popup.innerHTML = '';
+            popup.appendChild(img);
+            img.style.opacity = 1;
+            zv.removeClass(wrp, 'image-loading');
+            zv.addClass(wrp, 'image-loaded');
+        };
+        img.src = src; 
+    }
+
     Array.prototype.forEach.call(wrps, function(wrp, i) {
         var width = parseInt(wrp.getAttribute('data-width'), 10),
             height = parseInt(wrp.getAttribute('data-height'), 10),
@@ -23,6 +40,11 @@
         popup.appendChild(ldg);
         wrp.appendChild(icon);
         wrp.appendChild(popup);
+        
+        // Preload images on wider screens
+        if (Math.max(document.documentElement.clientWidth, window.innerWidth || 0) > 1024) {
+            loadImage(wrp, popup, src, width, height);
+        }
 
         wrp.addEventListener('click', function(evt) {
             var buffer = 20, // Icon width
@@ -68,18 +90,7 @@
             }
          
             if (zv.hasClass(wrp, 'image-unloaded')) {
-                zv.removeClass(wrp, 'image-unloaded');
-                zv.addClass(wrp, 'image-loading');
-                img = new window.Image(width, height);
-                img.style.opacity = 0;
-                img.onload = function() {
-                    popup.innerHTML = '';
-                    popup.appendChild(img);
-                    img.style.opacity = 1;
-                    zv.removeClass(wrp, 'image-loading');
-                    zv.addClass(wrp, 'image-loaded');
-                };
-                img.src = src;
+                loadImage(wrp, popup, src, width, height);
             }
 
             popup.style.width = w + 'px';
