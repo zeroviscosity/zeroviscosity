@@ -1,7 +1,7 @@
 .icon {
   background-color: transparent;
   background-image: url(/img/icons.png);
-  background-size: rem-calc(48) rem-calc(72);
+  background-size: rem-calc(48) rem-calc(96);
   display: block;
   height: rem-calc(24);
   width: rem-calc(24);
@@ -13,6 +13,9 @@
   }
   &.icon-contact {
     background-position: 0 rem-calc(-48);
+  }
+  &.icon-d3-js-step-by-step {
+    background-position: 0 rem-calc(-72);
   }
 }
 
@@ -26,6 +29,9 @@ a:hover {
     }
     &.icon-contact {
       background-position: rem-calc(-24) rem-calc(-48);
+    }
+    &.icon-contact {
+      background-position: rem-calc(-24) rem-calc(-72);
     }
   }
 }
