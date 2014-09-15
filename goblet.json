@@ -22,6 +22,7 @@
   "categories": [
     {
       "title": "D3.js Step by Step",
+      "subtitle": "A series of posts to get you started",
       "slug": "d3-js-step-by-step"
     }
   ],

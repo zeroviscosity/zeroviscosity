@@ -6,6 +6,7 @@ block head
 block wrapper
   div.zv-list
     h1=category.title
+    h3=category.subtitle
     if posts && posts.length
       for post in posts
         div.zv-list-entry
