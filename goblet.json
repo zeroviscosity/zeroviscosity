@@ -33,7 +33,7 @@
       "subtitle": "Some background on D3.js and an overview of this series",
       "slug": "step-0-intro",
       "created": "2014-09-14T17:55:53.867Z",
-      "tags": ["Data Visualizaiton", "D3.js", "JavaScript", "Open Data"],
+      "tags": ["Data Visualization", "D3.js", "JavaScript", "Open Data"],
       "published": true
     },
 
@@ -43,7 +43,7 @@
       "subtitle": "Setting up a bare-bones pie chart",
       "slug": "step-1-a-basic-pie-chart",
       "created": "2014-09-14T17:55:53.867Z",
-      "tags": ["Data Visualizaiton", "D3.js", "JavaScript", "Open Data"],
+      "tags": ["Data Visualization", "D3.js", "JavaScript", "Open Data"],
       "published": true
     },
     {
@@ -52,7 +52,7 @@
       "subtitle": "Turning a pie chart into a donut chart",
       "slug": "step-2-a-basic-donut-chart",
       "created": "2014-09-14T17:55:53.867Z",
-      "tags": ["Data Visualizaiton", "D3.js", "JavaScript", "Open Data"],
+      "tags": ["Data Visualization", "D3.js", "JavaScript", "Open Data"],
       "published": true
     },
     {
@@ -61,7 +61,7 @@
       "subtitle": "Providing context while making use of white space",
       "slug": "step-3-adding-a-legend",
       "created": "2014-09-14T17:55:53.867Z",
-      "tags": ["Data Visualizaiton", "D3.js", "JavaScript", "Open Data"],
+      "tags": ["Data Visualization", "D3.js", "JavaScript", "Open Data"],
       "published": true
     },
     {
@@ -70,7 +70,7 @@
       "subtitle": "Reading in data from an external CSV file",
       "slug": "step-4-loading-external-data",
       "created": "2014-09-14T17:55:53.867Z",
-      "tags": ["Data Visualizaiton", "D3.js", "JavaScript", "Open Data"],
+      "tags": ["Data Visualization", "D3.js", "JavaScript", "Open Data"],
       "published": true
     },
     {
@@ -79,7 +79,7 @@
       "subtitle": "Harnessing mouse events to layer on additional information",
       "slug": "step-5-adding-tooltips",
       "created": "2014-09-14T17:55:53.867Z",
-      "tags": ["Data Visualizaiton", "D3.js", "JavaScript", "Open Data"],
+      "tags": ["Data Visualization", "D3.js", "JavaScript", "Open Data"],
       "published": true
     },
     {
@@ -88,7 +88,7 @@
       "subtitle": "Adding the ability to filter the dataset and animate the transition",
       "slug": "step-6-animating-interactivity",
       "created": "2014-09-14T17:55:53.867Z",
-      "tags": ["Data Visualizaiton", "D3.js", "JavaScript", "Open Data"],
+      "tags": ["Data Visualization", "D3.js", "JavaScript", "Open Data"],
       "published": true
     }
   ]
