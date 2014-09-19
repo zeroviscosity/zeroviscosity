@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+  <loc>http://zeroviscosity.com/</loc>
+</url>
+<url>
+  <loc>http://zeroviscosity.com/category/d3-js-step-by-step</loc>
+</url>
+<url>
+  <loc>http://zeroviscosity.com/20-questions</loc>
+</url>
+<url>
+  <loc>http://zeroviscosity.com/contact</loc>
+</url>
+<url>
+  <loc>http://zeroviscosity.com/d3-js-step-by-step/step-0-intro</loc>
+</url>
+<url>
+  <loc>http://zeroviscosity.com/d3-js-step-by-step/step-1-a-basic-pie-chart</loc>
+</url>
+<url>
+  <loc>http://zeroviscosity.com/d3-js-step-by-step/step-2-a-basic-donut-chart</loc>
+</url>
+<url>
+  <loc>http://zeroviscosity.com/d3-js-step-by-step/step-3-adding-a-legend</loc>
+</url>
+<url>
+  <loc>http://zeroviscosity.com/d3-js-step-by-step/step-4-loading-external-data</loc>
+</url>
+<url>
+  <loc>http://zeroviscosity.com/d3-js-step-by-step/step-5-adding-tooltips</loc>
+</url>
+<url>
+  <loc>http://zeroviscosity.com/d3-js-step-by-step/step-6-animating-interactivity</loc>
+</url>
+</urlset>
