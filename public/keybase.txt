@@ -1,0 +1,66 @@
+==================================================================
+https://keybase.io/kentenglish
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://zeroviscosity.com
+  * I am kentenglish (https://keybase.io/kentenglish) on keybase.
+  * I have a public key with fingerprint D965 3F93 B55A 6035 66E6  AD67 6B25 0650 0FDB 3CD2
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "d9653f93b55a603566e6ad676b2506500fdb3cd2",
+            "host": "keybase.io",
+            "key_id": "6b2506500fdb3cd2",
+            "uid": "85dc92b40b0e00b41aa0f1169a63a500",
+            "username": "kentenglish"
+        },
+        "service": {
+            "hostname": "zeroviscosity.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1411505023,
+    "expire_in": 157680000,
+    "prev": "ec0863e4423091c150a0061350a6050b7a7eb3fb5d57306de3b20a878a30dd51",
+    "seqno": 5,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v1.0.5
+Comment: https://keybase.io/crypto
+
+yMHuAnicbZFdSBRRFMd3U9sUDENRI1+6KlSucmdmZ/YjySI1JHqQelkQt/m4uzvm
+zuzOzK6tIlpLGYI+FKZLRF8PCUFSQQ+FplsZuCWSqWUUuhVoZV+EuIjUHbG37svh
+nvP//845nCeZKYYMY+Lz1Idk0+OIMT6cDBqO7Xzb1gI4WQgDRws4gdaDW5Q8SPEr
+oqQBBxDsDE257RRH0ywDKZphEMMKjJXhSBoyNIRugaN4gQRm4JVV3YExHKuiMlHG
+OfxxiQLO/kcfXC/YaIG3k5wFchBByFkIloVugmDsLEOxWK8LVaRIrA+twyUNSZ5G
+UfWCVjPAhZDII31svfuGqBkpckhUeVkVtXAZL/sww6/ImszLjbjs1TS/Q3drYb8u
+b0KcawPk4kRJwPtjQwgpqihLwEFgJa+JOpmwEAQNaUhSZoBO+kUFuURdQVsZG8RP
+b4NCGIl4aGMoZLGQFLQTPDaxEDIEhSOD/ZyVtSKOcnO0QFspyAiI4kjI2qw2loKC
+QBNAXy0gycBB4zFZD0aqokditaCCQGtsuC7VYMwwbE7bpF/QkJGe9e+uccq0lvM6
+XnBw3vRzbHx+8F5kBz8TujtwqGGqfFI2eg/E/hj9M9655b6q086aL1fybhm7u2ai
+fZOx/IfRzPrqy1udKynla0Zt5XhOYWt0wJ23OHr01LfKidzeNxWO4ezUquava9t6
+onXjg7dLE3Nd4PrqVG7n0PfO2pJlZ/LidMcRbWyL1HStOGthNVJZW13Uf850tXhP
++Gz9u5tcXd77idUHReG4545zNOnrr3k+UhI407N3Ibgr/nv3LL/9wv0EGZjtzve1
+tXcszT5NWxjxTS8WDD26URH7Nec1p6sFz/Knaysdlsj59t7cxI/DDb1LpaGUl6/2
+FZo+fiKUwKXsF/vRX2ALH8I=
+=2z6f
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/kentenglish
+
+==================================================================
+
