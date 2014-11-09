@@ -15,7 +15,7 @@ block content
     p <strong>NOTE:</strong> Because we're building things up step by step, the source code contains <code>NEW</code>, <code>UPDATED</code> and <code>REMOVED</code> comments to annotate the lines that have been added, altered or deleted relative to the previous step.
 
   section
-    p So we have a swanky donut chart, but how are we supposed to know what each segment represents? It's time to add a legend <span class="image-wrapper" data-width="440" data-height="305" data-s3-src="#{category.slug}/#{post.slug}/legend.jpg"></span>, and we may as well make use of the white space we created when we switched to a donut:
+    p So we have a swanky donut chart, but how are we supposed to know what each segment represents? It's time to add a legend <span class="image-wrapper" data-width="440" data-height="305" data-src="/img/#{category.slug}/#{post.slug}/legend.jpg"></span>, and we may as well make use of the white space we created when we switched to a donut:
     iframe.centered(src="/static/d3-js-step-by-step/step-3-adding-a-legend.html", height="380", width="380", border="0", seamless)
     p  If we were to inspect the markup, we would see something like this:
     pre#markup-legend
@@ -38,7 +38,7 @@ block content
             <text x="22" y="14">Dijkstra</text>
           </g>
     p These <code>g</code> elements come after the <code>path</code> elements that we created in <a href="/d3-js-step-by-step/step-1-a-basic-pie-chart">Step 1</a>. The coloured squares and text labels are defined by <code>rect</code> and <code>text</code> elements, respectively. This seems straightforward enough. The only tricky bit is the amount by which each <code>g</code> has been translated, but we'll get to that soon enough.
-    p Before we proceed any further, an important thing to note is that we've gotten this far without employing any CSS at all <span class="image-wrapper" data-width="460" data-height="345" data-s3-src="#{category.slug}/#{post.slug}/css.gif"></span>. (You may have noticed the <code>normalize.css</code> file in the full code, but that's just there to do things like strip the margin from the body; it hasn't directly affected our example.) We're going to start this step by defining our first styles:
+    p Before we proceed any further, an important thing to note is that we've gotten this far without employing any CSS at all <span class="image-wrapper" data-width="460" data-height="345" data-src="/img/#{category.slug}/#{post.slug}/css.gif"></span>. (You may have noticed the <code>normalize.css</code> file in the full code, but that's just there to do things like strip the margin from the body; it hasn't directly affected our example.) We're going to start this step by defining our first styles:
     pre
       code.html
         :code

@@ -16,7 +16,7 @@ block content
    
   section
     div.panel
-      h3#why-a-pie Why a Pie? <span class="image-wrapper" data-width="500" data-height="330" data-s3-src="#{category.slug}/#{post.slug}/pie-chart.jpg"></span>
+      h3#why-a-pie Why a Pie? <span class="image-wrapper" data-width="500" data-height="330" data-src="/img/#{category.slug}/#{post.slug}/pie-chart.jpg"></span>
       p A few readers will invariably be thinking to themselves, "A pie chart? Really? Pie charts are a <em>terrible</em> way to visualize data. Why would you ever use a pie chart?" Those readers have a valid point. Pie charts are generally not as effective as bar charts because, as humans, <a href="https://en.wikipedia.org/wiki/Pie_chart#Use.2C_effectiveness_and_visual_perception" target="_blank">comparison by angle is harder than comparison by length</a>. However, this post is concerned with the demonstration of fundamental concepts in D3 as opposed to the promotion of one type of visualization over another. For our purposes, the pie/donut chart provides certain advantages; for instance, we won't need to any CSS for the initial steps. It also provides a natural excuse to introduce colour scales. I plan to look at other plot types, such as the venerable bar plot, in another series of posts.
     p To get the ball rolling, we're going to start with a basic pie chart:
     iframe.centered(src="/static/d3-js-step-by-step/step-1-a-basic-pie-chart.html", height="380", width="380", border="0", seamless)
@@ -86,7 +86,7 @@ block content
       li After the width we set the height.
       li Now we append a <code>g</code> element to the <code>svg</code> element.
       li Finally, because our reference is now to the <code>g</code> element, we center it in the containing <code>svg</code> element.
-    p All of those steps correspond exactly to the <a href="#markup-pie">markup</a> we examined above. It's exactly the order in which you'd do it if you were doing it by hand. There's no mystery here <span class="image-wrapper" data-width="500" data-height="279" data-s3-src="#{category.slug}/#{post.slug}/breaking-bad-magic.gif"></span>.
+    p All of those steps correspond exactly to the <a href="#markup-pie">markup</a> we examined above. It's exactly the order in which you'd do it if you were doing it by hand. There's no mystery here <span class="image-wrapper" data-width="500" data-height="279" data-src="/img/#{category.slug}/#{post.slug}/breaking-bad-magic.gif"></span>.
     p With those details out of the way, we can get onto the pie chart itself, for which we need ways of defining two things:
     ol
       li the radius, which determines the size of the overall chart
@@ -114,7 +114,7 @@ block content
           .attr('fill', function(d, i) { 
             return color(d.data.label);
           });
-    p I'll grant that this isn't quite as obvious as the earlier steps&mdash;there's a little magic <span class="image-wrapper" data-width="275" data-height="252" data-s3-src="#{category.slug}/#{post.slug}/magic.gif"></span> going on here&mdash;but again let's take it line by line:
+    p I'll grant that this isn't quite as obvious as the earlier steps&mdash;there's a little magic <span class="image-wrapper" data-width="275" data-height="252" data-src="/img/#{category.slug}/#{post.slug}/magic.gif"></span> going on here&mdash;but again let's take it line by line:
     ol
       li First we select all <code>path</code> elements inside our <code>svg</code> (or more specifically, inside the <code>g</code> element). At present these don't exist but we're going to create them in a moment.
       li The <code>data()</code> <a href="https://github.com/mbostock/d3/wiki/Selections#data" target="_blank">method</a> is how we associate our dataset with the <code>path</code> elements we're about to create. We do so by passing it through our <code>pie</code> function, which knows how to extract the values and give them meaning in the context of a pie chart.
