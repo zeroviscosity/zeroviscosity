@@ -1,3 +1,5 @@
+require('newrelic');
+
 var express = require('express'),
     logger = require('morgan'),
     goblet = require('./lib/goblet'),
