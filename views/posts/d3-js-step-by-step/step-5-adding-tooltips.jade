@@ -115,8 +115,8 @@ block content
       code.javascript.
         // OPTIONAL 
         path.on('mousemove', function(d) {
-          tooltip.style('top', (d3.event.pageY + 10) + 'px')
-            .style('left', (d3.event.pageX + 10) + 'px');
+          tooltip.style('top', (d3.event.layerY + 10) + 'px')
+            .style('left', (d3.event.layerX + 10) + 'px');
         });
     p If you didn't want the tooltip to stay in one place, you could add this after the <code>mouseout</code> event handler. (In the source code it's there but commented out.) It uses D3's handy <code>event</code>, which contains information about the event that just fired, to determine where on the chart the mouse currently is. Then it adjusts the <code>top</code> and <code>left</code> properties of the tooltip so that it will be 10px to the right and 10px below the cursor. That way the tooltip follows the cursor around for as long as its hovering over one of the segments <span class="image-wrapper" data-width="434" data-height="291" data-src="/img/#{category.slug}/#{post.slug}/dog-follow.gif"></span>. 
     p Mouse events are critical to interactivity, but so far we've only harnessed passive events, like hovering. In <a href="/d3-js-step-by-step/step-6-animating-interactivity">Step 6</a> we'll add a click event, which provides a more active form of interaction. Before that, though, you may wish to look over the full code as it stands at this point:
