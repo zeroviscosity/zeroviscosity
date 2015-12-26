@@ -33,7 +33,7 @@
       "subtitle": "Some background on D3.js and an overview of this series",
       "slug": "step-0-intro",
       "created": "2014-09-14T17:55:50Z",
-      "tags": ["Data Visualization", "D3.js", "JavaScript", "Open Data"],
+      "tags": ["Data Visualization", "D3.js", "JavaScript"],
       "published": true
     },
 
@@ -43,7 +43,7 @@
       "subtitle": "Setting up a bare-bones pie chart",
       "slug": "step-1-a-basic-pie-chart",
       "created": "2014-09-14T17:55:51Z",
-      "tags": ["Data Visualization", "D3.js", "JavaScript", "Open Data"],
+      "tags": ["Data Visualization", "D3.js", "JavaScript"],
       "published": true
     },
     {
@@ -52,7 +52,7 @@
       "subtitle": "Turning a pie chart into a donut chart",
       "slug": "step-2-a-basic-donut-chart",
       "created": "2014-09-14T17:55:52Z",
-      "tags": ["Data Visualization", "D3.js", "JavaScript", "Open Data"],
+      "tags": ["Data Visualization", "D3.js", "JavaScript"],
       "published": true
     },
     {
