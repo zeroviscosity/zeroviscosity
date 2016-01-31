@@ -82,6 +82,11 @@ blockquote {
   margin: rem-calc(16) auto;
 }
 
+.adsbygoogle {
+  border-bottom: rem-calc(1) solid #ccc;
+  margin: rem-calc(10) 0 rem-calc(40) 0;
+}
+
 .zv-container {
   .zv-post, .zv-page, .zv-list, .zv-error {
     padding: rem-calc(5) rem-calc(12) rem-calc(20) rem-calc(12);
