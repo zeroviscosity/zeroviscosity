@@ -1,19 +1,8 @@
 extends ../../post
+include ../../mixins/pie-tldr
 
 block content
-  section.panel
-    h3 TL;DR
-    p This post is part of a series that explores some key concepts in D3.js by building up an example, step by step, from a bare-bones pie chart to an interactive, animated donut chart that loads external data. For the enough-with-the-jibber-jabber-show-me-the-code types out there, here's a breakdown of the steps we'll be covering:
-    ul
-      li <a href="/d3-js-step-by-step/step-0-intro">Step 0: Intro</a>
-      li <a href="/d3-js-step-by-step/step-1-a-basic-pie-chart">Step 1: A Basic Pie Chart</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-1-a-basic-pie-chart.html" target="_blank">Code</a> | <a href="http://plnkr.co/edit/kgukfV?p=info" target="_blank">Demo</a>)
-      li <a href="/d3-js-step-by-step/step-2-a-basic-donut-chart">Step 2: A Basic Donut Chart</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-2-a-basic-donut-chart.html" target="_blank">Code</a> | <a href="http://plnkr.co/edit/Zfv7x6?p=info" target="_blank">Demo</a>)
-      li.bold <a href="/d3-js-step-by-step/step-3-adding-a-legend">Step 3: Adding a Legend</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-3-adding-a-legend.html" target="_blank">Code</a> | <a href="http://plnkr.co/edit/gE1xQu?p=info" target="_blank">Demo</a>) &larr; You Are Here
-      li <a href="/d3-js-step-by-step/step-4-loading-external-data">Step 4: Loading External Data</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-4-loading-external-data.html" target="_blank">Code</a> | <a href="http://plnkr.co/edit/3naIzX?p=info" target="_blank">Demo</a>)
-      li <a href="/d3-js-step-by-step/step-5-adding-tooltips">Step 5: Adding Tooltips</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-5-adding-tooltips.html" target="_blank">Code</a> | <a href="http://plnkr.co/edit/44O53d?p=info" target="_blank">Demo</a>)
-      li <a href="/d3-js-step-by-step/step-6-animating-interactivity">Step 6: Animating Interactivity</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-6-animating-interactivity.html" target="_blank">Code</a> | <a href="http://plnkr.co/edit/x1xD82?p=info" target="_blank">Demo</a>)
-    p <strong>NOTE:</strong> Because we're building things up step by step, the source code contains <code>NEW</code>, <code>UPDATED</code> and <code>REMOVED</code> comments to annotate the lines that have been added, altered or deleted relative to the previous step.
-
+  +pie-tldr(3)
   section
     p So we have a swanky donut chart, but how are we supposed to know what each segment represents? It's time to add a legend <span class="image-wrapper" data-width="440" data-height="305" data-src="/img/#{category.slug}/#{post.slug}/legend.jpg"></span>, and we may as well make use of the white space we created when we switched to a donut:
     iframe.centered(src="/static/d3-js-step-by-step/step-3-adding-a-legend.html", height="380", width="380", border="0", seamless)
@@ -83,7 +72,7 @@ block content
           li The height of the element is the height of the coloured square plus the spacing.
           li The vertical offset of the <em>entire</em> legend is calculated using the height of a single element and half the total number of elements.
           li The horizontal position&mdash;that is, the left edge of the element&mdash;is shifted left of center by a (somewhat arbitrary) distance equal to the width of two coloured squares. This is meant to provide room for the text.
-          li The vertical position&mdash; that is, the top edge of the element&mdash;is shifted up or down from center using the offset defined earlier and the index, <code>i</code>, of the current element, which D3 passes in as the second argument. 
+          li The vertical position&mdash; that is, the top edge of the element&mdash;is shifted up or down from center using the offset defined earlier and the index, <code>i</code>, of the current element, which D3 passes in as the second argument.
           li Finally we return the translation.
     p As I mentioned, we needn't worry too much about that last part. The key takeaway is:
     blockquote#key-point-3 When iterating over a dataset, D3 provides the index of the current entry as the second parameter to the callback.

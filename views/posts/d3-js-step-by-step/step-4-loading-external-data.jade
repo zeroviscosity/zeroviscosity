@@ -1,19 +1,8 @@
 extends ../../post
+include ../../mixins/pie-tldr
 
 block content
-  section.panel
-    h3 TL;DR
-    p This post is part of a series that explores some key concepts in D3.js by building up an example, step by step, from a bare-bones pie chart to an interactive, animated donut chart that loads external data. For the enough-with-the-jibber-jabber-show-me-the-code types out there, here's a breakdown of the steps we'll be covering:
-    ul
-      li <a href="/d3-js-step-by-step/step-0-intro">Step 0: Intro</a>
-      li <a href="/d3-js-step-by-step/step-1-a-basic-pie-chart">Step 1: A Basic Pie Chart</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-1-a-basic-pie-chart.html" target="_blank">Code</a> | <a href="http://plnkr.co/edit/kgukfV?p=info" target="_blank">Demo</a>)
-      li <a href="/d3-js-step-by-step/step-2-a-basic-donut-chart">Step 2: A Basic Donut Chart</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-2-a-basic-donut-chart.html" target="_blank">Code</a> | <a href="http://plnkr.co/edit/Zfv7x6?p=info" target="_blank">Demo</a>)
-      li <a href="/d3-js-step-by-step/step-3-adding-a-legend">Step 3: Adding a Legend</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-3-adding-a-legend.html" target="_blank">Code</a> | <a href="http://plnkr.co/edit/gE1xQu?p=info" target="_blank">Demo</a>)
-      li.bold <a href="/d3-js-step-by-step/step-4-loading-external-data">Step 4: Loading External Data</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-4-loading-external-data.html" target="_blank">Code</a> | <a href="http://plnkr.co/edit/3naIzX?p=info" target="_blank">Demo</a>) &larr; You Are Here
-      li <a href="/d3-js-step-by-step/step-5-adding-tooltips">Step 5: Adding Tooltips</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-5-adding-tooltips.html" target="_blank">Code</a> | <a href="http://plnkr.co/edit/44O53d?p=info" target="_blank">Demo</a>)
-      li <a href="/d3-js-step-by-step/step-6-animating-interactivity">Step 6: Animating Interactivity</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-6-animating-interactivity.html" target="_blank">Code</a> | <a href="http://plnkr.co/edit/x1xD82?p=info" target="_blank">Demo</a>)
-    p <strong>NOTE:</strong> Because we're building things up step by step, the source code contains <code>NEW</code>, <code>UPDATED</code> and <code>REMOVED</code> comments to annotate the lines that have been added, altered or deleted relative to the previous step.
-
+  +pie-tldr(4)
   section
     p Up until now our dataset has been, for lack of a better word, contrived. It's time we used some real data: the <a href="https://www1.toronto.ca/wps/portal/contentonly?vgnextoid=ca20256c54ea4310VgnVCM1000003dd60f89RCRD" target="_blank">Toronto Parking Ticket dataset</a> <span class="image-wrapper" data-width="392" data-height="235" data-src="/img/#{category.slug}/#{post.slug}/bad-parking.gif"></span>. In particular, we'll use the volume of parking tickets by day of the week in 2012.
     iframe.centered(src="/static/d3-js-step-by-step/step-4-loading-external-data.html", height="380", width="380", border="0", seamless)
@@ -46,18 +35,18 @@ block content
           var path = svg.selectAll('path')
             .data(pie(dataset))
           // ...
-          // A bunch of code    
+          // A bunch of code
           // ...
           legend.append('text')
             .attr('x', legendRectSize + legendSpacing)
             .attr('y', legendRectSize - legendSpacing)
-            .text(function(d) { return d; });                       
+            .text(function(d) { return d; });
 
         });                                                // NEW
     p First of all, we indent everything starting at the definition of <code>path</code> and wrap it in a callback to D3's <code>csv()</code> <a href="https://github.com/mbostock/d3/wiki/CSV#csv" target="_blank">method</a>, which takes a URL as the first parameter. In our case we're just pointing it at the <code>weekdays.csv</code> file that's in the same directory as the code itself. Loading an external file is an asynchronous operation, which is why we have to put all of the code that's dependent on the dataset inside a callback.
     p When D3 parses a CSV file, by default it assumes that the first row contains the column names, as is the case with our file. It uses those names as the keys in the key-value pairs on the object that it creates for each row. In other words, the dataset we end up with will have the same structure as the the dummy dataset we defined in <a href="/d3-js-step-by-step/step-1-a-basic-pie-chart">Step 1</a>, except that it will have seven entries.
     p One issue is that the values in our newly fetched dataset will all be strings initially. Because we need the counts to be numerical, in the first three lines after the CSV has loaded we iterate over our new dataset and cast each <code>count</code> field as a number. The fastest way to turn a string into a number in JavaScript is to stick a <code>+</code> in front of it. Once that's done we can carry on with the rest of the code, remembering, of course, to close off the callback and <code>csv()</code> function at the end.
-    p One thing to note is that we don't need to alter any of the existing code (apart from sticking some of it inside a callback). The donut segments and the legend readjust to accordingly. We could, in fact, load in any CSV that has label and count fields and it would work. The only issue would be if there were so many rows that legend outgrew its donut hole. 
+    p One thing to note is that we don't need to alter any of the existing code (apart from sticking some of it inside a callback). The donut segments and the legend readjust to accordingly. We could, in fact, load in any CSV that has label and count fields and it would work. The only issue would be if there were so many rows that legend outgrew its donut hole.
     p Also worth mentioning is that the data file did not need to be a CSV. D3 also has a <code>tsv()</code> <a href="https://github.com/mbostock/d3/wiki/CSV#tsv" target="_blank">method</a> for&mdash;you guessed it&mdash;TSV files, and a <code>dsv()</code> <a href="https://github.com/mbostock/d3/wiki/CSV#arbitrary-delimiters" target="_blank">method</a> for files with arbitrary delimiters. Of course we aren't limited to D3's file parsers; they're handy but not required. As long as we have a dataset to feed D3 and can tell it how to access what it needs, we're golden <span class="image-wrapper" data-width="300" data-height="300" data-src="/img/#{category.slug}/#{post.slug}/self-high-five.gif"></span>.
     p We can now start adding some interactivity in the form of <a href="/d3-js-step-by-step/step-5-adding-tooltips">tooltips</a>. But first you can peruse the full code for this step if you wish:
     div.lazy-code(data-src="/static/d3-js-step-by-step/step-4-loading-external-data.html", data-language="html")

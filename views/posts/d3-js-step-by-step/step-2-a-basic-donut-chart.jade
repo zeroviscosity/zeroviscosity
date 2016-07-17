@@ -1,20 +1,9 @@
 extends ../../post
+include ../../mixins/pie-tldr
 
 block content
-  section.panel
-    h3 TL;DR 
-    p This post is part of a series that explores some key concepts in D3.js by building up an example, step by step, from a bare-bones pie chart to an interactive, animated donut chart that loads external data. For the enough-with-the-jibber-jabber-show-me-the-code types out there, here's a breakdown of the steps we'll be covering:
-    ul
-      li <a href="/d3-js-step-by-step/step-0-intro">Step 0: Intro</a>
-      li <a href="/d3-js-step-by-step/step-1-a-basic-pie-chart">Step 1: A Basic Pie Chart</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-1-a-basic-pie-chart.html" target="_blank">Code</a> | <a href="http://plnkr.co/edit/kgukfV?p=info" target="_blank">Demo</a>)
-      li.bold <a href="/d3-js-step-by-step/step-2-a-basic-donut-chart">Step 2: A Basic Donut Chart</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-2-a-basic-donut-chart.html" target="_blank">Code</a> | <a href="http://plnkr.co/edit/Zfv7x6?p=info" target="_blank">Demo</a>) &larr; You Are Here
-      li <a href="/d3-js-step-by-step/step-3-adding-a-legend">Step 3: Adding a Legend</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-3-adding-a-legend.html" target="_blank">Code</a> | <a href="http://plnkr.co/edit/gE1xQu?p=info" target="_blank">Demo</a>)
-      li <a href="/d3-js-step-by-step/step-4-loading-external-data">Step 4: Loading External Data</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-4-loading-external-data.html" target="_blank">Code</a> | <a href="http://plnkr.co/edit/3naIzX?p=info" target="_blank">Demo</a>)
-      li <a href="/d3-js-step-by-step/step-5-adding-tooltips">Step 5: Adding Tooltips</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-5-adding-tooltips.html" target="_blank">Code</a> | <a href="http://plnkr.co/edit/44O53d?p=info" target="_blank">Demo</a>)
-      li <a href="/d3-js-step-by-step/step-6-animating-interactivity">Step 6: Animating Interactivity</a> (<a href="https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-6-animating-interactivity.html" target="_blank">Code</a> | <a href="http://plnkr.co/edit/x1xD82?p=info" target="_blank">Demo</a>)
-    p <strong>NOTE:</strong> Because we're building things up step by step, the source code contains <code>NEW</code>, <code>UPDATED</code> and <code>REMOVED</code> comments to annotate the lines that have been added, altered or deleted relative to the previous step.
-
-  section 
+  +pie-tldr(2)
+  section
     p Food-wise, I prefer pie to donuts <span class="image-wrapper" data-width="318" data-height="232" data-src="/img/#{category.slug}/#{post.slug}/donuts.gif"></span>, but when it comes to data viz, donut charts have certain advantages. Primarily because the interior can be put to use (which we'll be doing in the <a href="/d3-js-step-by-step/step-3-adding-a-legend">next step</a>). But how can we make our pie into a donut?
     iframe.centered(src="/static/d3-js-step-by-step/step-2-a-basic-donut-chart.html", height="380", width="380", border="0", seamless)
     p I suppose we could create a white circle, make sure its z-index is over 9000, and then position it absolutely over top of the pie. That could work, but it's a terrible idea <span class="image-wrapper" data-width="300" data-height="216" data-src="/img/#{category.slug}/#{post.slug}/doing-it-wrong.gif"></span>. Instead we're going to make two small additions to the code. First we'll define how wide the donut should be:
