@@ -11,13 +11,13 @@
       "slug": "20-questions",
       "created": "2014-08-31T21:37:48.379Z",
       "published": true
-    }, 
+    },
     {
       "title": "Contact",
       "slug": "contact",
       "created": "2014-08-30T16:24:54.427Z",
       "published": true
-    }  
+    }
   ],
   "categories": [
     {
@@ -26,7 +26,7 @@
       "slug": "d3-js-step-by-step"
     }
   ],
-  "posts": [    
+  "posts": [
     {
       "category": 0,
       "title": "Intro",

@@ -2,6 +2,7 @@ extends ../../post
 include ../../mixins/pie-tldr
 
 block content
+  include ../../includes/v4-update
   +pie-tldr(1)
   section
     div.panel
@@ -34,28 +35,28 @@ block content
     pre
       code.javascript.
         var dataset = [
-          { label: 'Abulia', count: 10 }, 
+          { label: 'Abulia', count: 10 },
           { label: 'Betelgeuse', count: 20 },
           { label: 'Cantaloupe', count: 30 },
           { label: 'Dijkstra', count: 40 }
         ];
-    p These four entries correspond to the four segments in our chart and to the four <code>path</code> elements in the SVG code above. We could have used a simple array of numbers for this step, but this mimics the structure of the dataset we'll be using later on and, more importantly, with the datasets you're apt to meet in the wild. 
+    p These four entries correspond to the four segments in our chart and to the four <code>path</code> elements in the SVG code above. We could have used a simple array of numbers for this step, but this mimics the structure of the dataset we'll be using later on and, more importantly, with the datasets you're apt to meet in the wild.
     p Next we'll define some dimensions for our chart:
     pre
       code.javascript.
         var width = 360;
         var height = 360;
-        var radius = Math.min(width, height) / 2;     
+        var radius = Math.min(width, height) / 2;
     p The width and height are self-explanatory. Since pie charts are round, we need a radius, which we set to half of the smaller of the two dimensions. In this case the width and height are the same, but this way we could change one of those without having to also update the radius. Now it's time to put D3 to work for us:
     pre
       code.javascript.
-        var color = d3.scale.category20b();
-    p This line defines a colour scale for us. D3 provides a few different <a href="https://github.com/mbostock/d3/wiki/Ordinal-Scales#categorical-colors" target="_blank">colour scales</a>. If we had more than twenty entries in our dataset, D3 would start to reuse colours. Alternatively we could have used the built-in support for <a href="https://github.com/mbostock/d3/wiki/Ordinal-Scales#colorbrewer" target="_blank">ColorBrewer</a> or defined our own palette by providing an array of colours:
+        var color = d3.scaleOrdinal(d3.schemeCategory20b);
+    p This line defines a colour scale for us. D3 provides a few different <a href="https://github.com/d3/d3-scale/blob/master/README.md#category-scales" target="_blank">colour scales</a>. If we had more than twenty entries in our dataset, D3 would start to reuse colours. Alternatively we could have used the <a href="https://github.com/d3/d3-scale-chromatic" target="_blank">d3-scale-chromatic</a> module or defined our own palette by providing an array of colours:
     pre
       code.javascript.
         // Alternative
-        var color = d3.scale.ordinal()
-          .range(['#A60F2B', '#648C85', '#B3F2C9', '#528C18', '#C3F25C']); 
+        var color = d3.scaleOrdinal()
+          .range(['#A60F2B', '#648C85', '#B3F2C9', '#528C18', '#C3F25C']);
     p Next we'll create the <code>svg</code> and <code>g</code> elements that we saw in the <a href="#markup-pie">markup</a> earlier:
     pre
       code.javascript.
@@ -80,19 +81,20 @@ block content
     ol
       li the radius, which determines the size of the overall chart
       li the start and end angles of each segment
-    p To define the radius we use D3's <code>svg.arc()</code> and provide its <code>outerRadius()</code> method with the radius we defined earlier:
+    p To define the radius we use D3's <code>arc()</code> with the <code>innerRadius()</code> set to 0 (more on this in <a href="/d3-js-step-by-step/step-2-a-basic-donut-chart">Step 2</a>) and its <code>outerRadius()</code> set to the radius we defined earlier:
     pre
       code.javascript.
-        var arc = d3.svg.arc()
+        var arc = d3.arc()
+          .innerRadius(0)
           .outerRadius(radius);
-    p For the start and end angles of the segments, we use D3's <code>layout.pie()</code>: 
+    p For the start and end angles of the segments, we use D3's <code>pie()</code>:
     pre
       code.javascript.
-        var pie = d3.layout.pie()
+        var pie = d3.pie()
           .value(function(d) { return d.count; })
           .sort(null);
-    p For it we need to define how to extract the numerical data from each entry in our dataset; this is where the <code>count</code> property of the objects we defined earlier comes into play. If we had just had an array of numbers, then instead of returning <code>d.count</code> we could just have returned <code>d</code>. We specify <code>sort(null)</code> to disable <a href="https://github.com/mbostock/d3/wiki/Pie-Layout#sort" target="_blank">sorting</a> of the entries, because a) we have them in the order we want and b) later on sorting will mess with our animation. By default it will sort in order of descending value.
-    p Now that we have functions for the radius and the angles, we can take the final step of creating our chart: 
+    p For it we need to define how to extract the numerical data from each entry in our dataset; this is where the <code>count</code> property of the objects we defined earlier comes into play. If we had just had an array of numbers, then instead of returning <code>d.count</code> we could just have returned <code>d</code>. We specify <code>sort(null)</code> to disable <a href="https://github.com/d3/d3-shape/blob/master/README.md#pie_sort" target="_blank">sorting</a> of the entries, because a) we have them in the order we want and b) later on sorting will mess with our animation. By default it will sort in order of descending value.
+    p Now that we have functions for the radius and the angles, we can take the final step of creating our chart:
     pre
       code.javascript.
         var path = svg.selectAll('path')
@@ -100,18 +102,18 @@ block content
           .enter()
           .append('path')
           .attr('d', arc)
-          .attr('fill', function(d, i) { 
+          .attr('fill', function(d, i) {
             return color(d.data.label);
           });
     p I'll grant that this isn't quite as obvious as the earlier steps&mdash;there's a little magic <span class="image-wrapper" data-width="275" data-height="252" data-src="/img/#{category.slug}/#{post.slug}/magic.gif"></span> going on here&mdash;but again let's take it line by line:
     ol
       li First we select all <code>path</code> elements inside our <code>svg</code> (or more specifically, inside the <code>g</code> element). At present these don't exist but we're going to create them in a moment.
-      li The <code>data()</code> <a href="https://github.com/mbostock/d3/wiki/Selections#data" target="_blank">method</a> is how we associate our dataset with the <code>path</code> elements we're about to create. We do so by passing it through our <code>pie</code> function, which knows how to extract the values and give them meaning in the context of a pie chart.
-      li The <code>enter()</code> <a href="https://github.com/mbostock/d3/wiki/Selections#enter" target="_blank">method</a> creates placeholder nodes for each of the values in our dataset.
+      li The <code>data()</code> <a href="https://github.com/d3/d3-selection/blob/master/README.md#selection_data" target="_blank">method</a> is how we associate our dataset with the <code>path</code> elements we're about to create. We do so by passing it through our <code>pie</code> function, which knows how to extract the values and give them meaning in the context of a pie chart.
+      li The <code>enter()</code> <a href="https://github.com/d3/d3-selection/blob/master/README.md#selection_enter" target="_blank">method</a> creates placeholder nodes for each of the values in our dataset.
       li Next we use <code>append()</code> to replace our placeholders with <code>path</code> elements.
       li We define the <code>d</code> attribute&mdash;the complicated one in the <a href="#markup-pie">markup</a>&mdash;using our <code>arc</code> function.
       li Finally we make use of our colour scale to define the <code>fill</code> for each <code>path</code> by associating a colour with each label in the dataset.
-    p This is probably the hardest part of the entire post, but there is a silver lining: 
+    p This is probably the hardest part of the entire post, but there is a silver lining:
     blockquote In D3 examples you'll see the <code>.selectAll(el).data(data).enter().append(el)</code> pattern again and again. It's a fundamental set of steps that occurs in many of the most common chart types.
     p In other words, this is not specific to this example; it's representative of something you'll see often when you start digging into D3 code. For me it's a kind of lodestone that helps orient me in a new piece of code.
     p Our basic pie chart is now complete. We can now move on to the <a href="/d3-js-step-by-step/step-2-a-basic-donut-chart">next step</a> or pause to consider the code in its entirety along with its accompanying HTML:

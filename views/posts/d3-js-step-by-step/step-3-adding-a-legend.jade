@@ -2,6 +2,7 @@ extends ../../post
 include ../../mixins/pie-tldr
 
 block content
+  include ../../includes/v4-update
   +pie-tldr(3)
   section
     p So we have a swanky donut chart, but how are we supposed to know what each segment represents? It's time to add a legend <span class="image-wrapper" data-width="440" data-height="305" data-src="/img/#{category.slug}/#{post.slug}/legend.jpg"></span>, and we may as well make use of the white space we created when we switched to a donut:

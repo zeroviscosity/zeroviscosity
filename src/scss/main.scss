@@ -105,13 +105,15 @@ blockquote {
       }
     }
   }
+  .zv-date {
+    color: #777;
+    font-size: rem-calc(14);
+  }
   .zv-post, .zv-list-entry {
     .zv-meta {
       @include clearfix();
       margin: rem-calc(8) 0;
       .zv-date {
-        color: #777;
-        font-size: rem-calc(14);
         margin: 0 0 rem-calc(8) 0;
       }
       .zv-tags {
