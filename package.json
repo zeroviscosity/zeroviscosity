@@ -1,30 +1,31 @@
 {
-  "name": "goblet",
+  "name": "zeroviscosity",
   "description": "NodeJS-based blog framework",
   "version": "0.0.1",
   "homepage": "https://github.com/zeroviscosity/goblet",
-  "author": "Kent English (http://kentenglish.ca/)",
+  "author": "Kent English (http://zeroviscosity.com)",
   "dependencies": {
-    "express": "~4.6.1",
-    "jade": "~1.4.2",
-    "lodash": "^3.10.1",
-    "moment": "^2.8.3",
-    "morgan": "~1.1.1",
-    "newrelic": "^1.22.1"
+    "express": "4.14.0",
+    "lodash": "4.17.3",
+    "moment": "2.17.1",
+    "morgan": "1.7.0",
+    "newrelic": "1.36.0",
+    "pug": "2.0.0-beta6"
   },
   "devDependencies": {
-    "chai": "~1.9.1",
-    "gulp": "~3.8.6",
-    "gulp-concat": "^2.3.4",
-    "gulp-imagemin": "^2.3.0",
-    "gulp-jshint": "^1.11.2",
-    "gulp-livereload": "^2.1.0",
-    "gulp-nodemon": "^1.0.4",
-    "gulp-sass": "^0.7.2",
-    "gulp-sourcemaps": "^1.1.4",
-    "gulp-uglify": "^1.0.1",
-    "jshint-stylish": "^0.4.0",
-    "mocha": "~1.20.1"
+    "eslint": "3.12.2",
+    "eslint-config-airbnb-base": "^11.0.0",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "gulp": "3.9.1",
+    "gulp-concat": "2.6.1",
+    "gulp-eslint": "3.0.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-nodemon": "2.2.1",
+    "gulp-sass": "3.0.0",
+    "gulp-uglify": "2.0.0"
   },
   "licenses": [
     {
