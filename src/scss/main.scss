@@ -1,13 +1,14 @@
 @charset "UTF-8";
 
 @import
-  "../../bower_components/foundation/scss/normalize",
-  "../../bower_components/foundation/scss/foundation/components/global",
+  "normalize",
+  "foundation/settings",
   "settings",
-  "../../bower_components/foundation/scss/foundation/components/buttons",
-  "../../bower_components/foundation/scss/foundation/components/panels",
-  "../../bower_components/foundation/scss/foundation/components/type",
-  "../../bower_components/foundation/scss/foundation/components/visibility";
+  "foundation/components/global",
+  "foundation/components/buttons",
+  "foundation/components/panels",
+  "foundation/components/type",
+  "foundation/components/visibility";
 
 html, body {
   @include single-transition(opacity);
@@ -99,7 +100,7 @@ blockquote {
     }
     .zv-list-entry {
       border-bottom: rem-calc(1) solid $secondary-color;
-      padding: rem-calc(12); 
+      padding: rem-calc(12);
       .zv-title {
         font-size: rem-calc(36);
       }
@@ -128,7 +129,7 @@ blockquote {
           text-decoration: none;
           &:hover {
             background: darken($secondary-color, 10%);
-            color: $primary-color; 
+            color: $primary-color;
           }
         }
       }
@@ -193,7 +194,7 @@ blockquote {
   }
 }
 
-@import 
+@import
   "icons",
   "images",
   "lazy-code",
