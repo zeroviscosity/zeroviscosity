@@ -1,17 +1,17 @@
 doctype html
 html(lang="en")
-  head 
+  head
     meta(charset="utf-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(name="description", content="#{description}") 
+    meta(name="description", content=description)
     block head
     title=title
-    link(rel="canonical", href="#{url}")
+    link(rel="canonical", href=url)
     link(rel="shortcut icon", type="image/x-icon", href="/favicon.ico")
-    link(rel="stylesheet", href="/css/main.css?v=1.01")
+    link(rel="stylesheet", href="/css/main.css?v=1.02")
     style.
       @import url("//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700");
-  body 
+  body
     nav.clearfix
       div.zv-logo-top
         div.zv-logo
@@ -24,19 +24,19 @@ html(lang="en")
         if categories && categories.length
           for category in categories
             li
-              a(href="/category/#{category.slug}")
-                span.icon(class="icon-#{category.slug}")
+              a(href=`/category/${category.slug}`)
+                span.icon(class=`icon-${category.slug}`)
                 span.text=category.title
         if pages && pages.length
           for page in pages
             li
-              a(href="/#{page.slug}")
-                span.icon(class="icon-#{page.slug}")
+              a(href=`/${page.slug}`)
+                span.icon(class=`icon-${page.slug}`)
                 span.text=page.title
 
     div.zv-container
       block wrapper
-    
+
     div.hide
       div#loading.loading-wrp-1
         div.loading-wrp-2
@@ -49,7 +49,7 @@ html(lang="en")
       (function(w, d) {
           var cb = function() {
               var js = d.createElement('script'),
-                  b = d.getElementsByTagName('body')[0]; 
+                  b = d.getElementsByTagName('body')[0];
 
               js.src = '/js/app.js';
               b.appendChild(js);

@@ -5,22 +5,19 @@ block head
 
 block wrapper
   div.zv-list
-    if tag
-      div.zv-filter
-        h3 <strong>Filter:</strong> #{tag}
+    h1=category.title
+    h3=category.subtitle
     if posts && posts.length
       for post in posts
         div.zv-list-entry
           h2
-            a(href="/#{categories[post.category].slug}/#{post.slug}") #{categories[post.category].title}: #{post.title}
+            a(href=`/${category.slug}/${post.slug}`) #{post.title}
           h4=post.subtitle
           div.zv-meta
             div.zv-date=post.date
             div.zv-tags
               for tag in post.tags
-                a.left.zv-tag(href="/?tag=#{tag}")=tag
+                a.left.zv-tag(href=`/?tag=${tag}`)=tag
     else
       div.zv-list-entry
         h2 No posts found.
-
-    include includes/ads
