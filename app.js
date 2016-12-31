@@ -2,13 +2,12 @@ require('newrelic');
 
 const express = require('express');
 const logger = require('morgan');
-
 const goblet = require('./lib/goblet');
-
-const app = express();
 
 const port = process.env.NODE_PORT || 3000;
 const env = process.env.NODE_ENV || 'development';
+
+const app = express();
 
 app.enable('verbose errors');
 
