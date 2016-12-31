@@ -87,58 +87,59 @@ blockquote {
   margin: rem-calc(10) 0 rem-calc(40) 0;
 }
 
-.zv-container {
-  .zv-post, .zv-page, .zv-list, .zv-error {
-    padding: rem-calc(5) rem-calc(12) rem-calc(20) rem-calc(12);
-    .zv-content {
-      margin: rem-calc(20) 0 rem-calc(40) 0;
-    }
+.zv-post, .zv-page, .zv-list, .zv-error {
+  padding: rem-calc(5) rem-calc(12) rem-calc(20) rem-calc(12);
+}
+
+.zv-content {
+  margin: rem-calc(20) 0 rem-calc(40) 0;
+}
+
+.zv-filter {
+  padding: rem-calc(12) rem-calc(12) 0 rem-calc(12);
+}
+
+.zv-list-entry {
+  border-bottom: rem-calc(1) solid $secondary-color;
+  padding: rem-calc(12);
+}
+
+.zv-title {
+  font-size: rem-calc(36);
+}
+
+.zv-date {
+  color: #777;
+  font-size: rem-calc(14);
+  margin: 0 0 rem-calc(8) 0;
+}
+
+.zv-meta {
+  @include clearfix();
+  margin: rem-calc(8) 0;
+}
+.zv-post {
+  .zv-meta {
+    margin: rem-calc(16) 0 rem-calc(28) 0;
   }
-  .zv-list {
-    .zv-filter {
-      padding: rem-calc(12) rem-calc(12) 0 rem-calc(12);
-    }
-    .zv-list-entry {
-      border-bottom: rem-calc(1) solid $secondary-color;
-      padding: rem-calc(12);
-      .zv-title {
-        font-size: rem-calc(36);
-      }
-    }
+}
+
+.zv-tag {
+  @include radius(rem-calc(4));
+  @include single-transition(background-color);
+  background: $secondary-color;
+  color: white;
+  font-size: rem-calc(12);
+  margin: 0 rem-calc(4) rem-calc(4) 0;
+  padding: rem-calc(0) rem-calc(8);
+  text-decoration: none;
+  &:visited {
+    background: $secondary-color;
+    color: white;
   }
-  .zv-date {
-    color: #777;
-    font-size: rem-calc(14);
-  }
-  .zv-post, .zv-list-entry {
-    .zv-meta {
-      @include clearfix();
-      margin: rem-calc(8) 0;
-      .zv-date {
-        margin: 0 0 rem-calc(8) 0;
-      }
-      .zv-tags {
-        .zv-tag {
-          @include radius(rem-calc(4));
-          @include single-transition(background-color);
-          background: $secondary-color;
-          color: white;
-          font-size: rem-calc(12);
-          margin: 0 rem-calc(4) rem-calc(4) 0;
-          padding: rem-calc(0) rem-calc(8);
-          text-decoration: none;
-          &:hover {
-            background: darken($secondary-color, 10%);
-            color: $primary-color;
-          }
-        }
-      }
-    }
-  }
-  .zv-post {
-    .zv-meta {
-      margin: rem-calc(16) 0 rem-calc(28) 0;
-    }
+  &:hover {
+    background: darken($secondary-color, 10%);
+    color: $primary-color;
   }
 }
 
@@ -155,29 +156,32 @@ blockquote {
     position: fixed;
     width: rem-calc(120);
   }
+
   .zv-container {
     height: 100%;
     overflow-y: auto;
-    .zv-page, .zv-post, .zv-list, .zv-error {
-      padding: rem-calc(10) rem-calc(20);
+  }
+
+  .zv-page, .zv-post, .zv-list, .zv-error {
+    padding: rem-calc(10) rem-calc(20);
+  }
+
+  .zv-meta {
+    margin: rem-calc(20) 0 rem-calc(12) 0;
+  }
+  .zv-post {
+    .zv-meta {
+      margin: rem-calc(30) 0 rem-calc(38) 0;
     }
-    .zv-post, .zv-list-entry {
-      .zv-meta {
-        margin: rem-calc(20) 0 rem-calc(12) 0;
-        .zv-date {
-          float: left;
-          margin: 0;
-        }
-        .zv-tags {
-          float: right;
-        }
-      }
-    }
-    .zv-post {
-      .zv-meta {
-        margin: rem-calc(30) 0 rem-calc(38) 0;
-      }
-    }
+  }
+
+  .zv-date {
+    float: left;
+    margin: 0;
+  }
+
+  .zv-tags {
+    float: right;
   }
 }
 
@@ -185,12 +189,11 @@ blockquote {
   footer {
     width: rem-calc(240);
   }
-  .zv-container {
-    .zv-page, .zv-post, .zv-list, .zv-error {
-      margin: 0 auto;
-      max-width: rem-calc(1024);
-      padding: rem-calc(20) rem-calc(40);
-    }
+
+  .zv-page, .zv-post, .zv-list, .zv-error {
+    margin: 0 auto;
+    max-width: rem-calc(1024);
+    padding: rem-calc(20) rem-calc(40);
   }
 }
 
