@@ -24,11 +24,12 @@ html(lang="en")
             span.icon.icon-home
             span.text Home
         if categories && categories.length
-          for category in categories
-            li
-              a(href=`/category/${category.slug}`)
-                span.icon(class=`icon-${category.slug}`)
-                span.text=category.title
+          for category, index in categories
+            if index > 0
+              li
+                a(href=`/category/${category.slug}`)
+                  span.icon(class=`icon-${category.slug}`)
+                  span.text=category.title
         if pages && pages.length
           for page in pages
             li

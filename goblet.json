@@ -21,6 +21,11 @@
   ],
   "categories": [
     {
+      "title": "Blog",
+      "subtitle": "Posts about this, that and the other",
+      "slug": "blog"
+    },
+    {
       "title": "D3.js Step by Step",
       "subtitle": "A series of posts to get you started",
       "slug": "d3-js-step-by-step"
@@ -28,7 +33,7 @@
   ],
   "posts": [
     {
-      "category": 0,
+      "category": 1,
       "title": "Intro",
       "subtitle": "Some background on D3.js and an overview of this series",
       "slug": "step-0-intro",
@@ -38,7 +43,7 @@
     },
 
     {
-      "category": 0,
+      "category": 1,
       "title": "A Basic Pie Chart",
       "subtitle": "Setting up a bare-bones pie chart",
       "slug": "step-1-a-basic-pie-chart",
@@ -47,7 +52,7 @@
       "published": true
     },
     {
-      "category": 0,
+      "category": 1,
       "title": "A Basic Donut Chart",
       "subtitle": "Turning a pie chart into a donut chart",
       "slug": "step-2-a-basic-donut-chart",
@@ -56,7 +61,7 @@
       "published": true
     },
     {
-      "category": 0,
+      "category": 1,
       "title": "Adding a Legend",
       "subtitle": "Providing context while making use of white space",
       "slug": "step-3-adding-a-legend",
@@ -65,7 +70,7 @@
       "published": true
     },
     {
-      "category": 0,
+      "category": 1,
       "title": "Loading External Data",
       "subtitle": "Reading in data from an external CSV file",
       "slug": "step-4-loading-external-data",
@@ -74,7 +79,7 @@
       "published": true
     },
     {
-      "category": 0,
+      "category": 1,
       "title": "Adding Tooltips",
       "subtitle": "Harnessing mouse events to layer on additional information",
       "slug": "step-5-adding-tooltips",
@@ -83,12 +88,21 @@
       "published": true
     },
     {
-      "category": 0,
+      "category": 1,
       "title": "Animating Interactivity",
       "subtitle": "Adding the ability to filter the dataset and animate the transition",
       "slug": "step-6-animating-interactivity",
       "created": "2014-09-14T17:55:56Z",
       "tags": ["Data Visualization", "D3.js", "JavaScript", "Open Data"],
+      "published": true
+    },
+    {
+      "category": 1,
+      "title": "Using Font Icons in D3.js",
+      "subtitle": "Include font-based icons in your charts",
+      "slug": "using-font-icons-in-d3-js",
+      "created": "2017-03-12T21:27:27Z",
+      "tags": ["Data Visualization", "D3.js", "JavaScript"],
       "published": true
     }
   ]
