@@ -13,7 +13,7 @@
     "pug": "2.0.0-beta6"
   },
   "devDependencies": {
-    "eslint": "3.12.2",
+    "eslint": "6.8.0",
     "eslint-config-airbnb-base": "^11.0.0",
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-import": "^2.2.0",
