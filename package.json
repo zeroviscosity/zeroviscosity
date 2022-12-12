@@ -5,7 +5,7 @@
   "homepage": "https://github.com/zeroviscosity/goblet",
   "author": "Kent English (http://zeroviscosity.com)",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "morgan": "^1.10.0",
